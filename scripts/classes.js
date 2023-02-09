@@ -4,14 +4,7 @@ const oppacity = 0.0;
 
 /* --- SPRITE CLASS --- */
 class Sprite {
-  constructor({
-    position,
-    velocity,
-    image,
-    frames = { max: 1 },
-    sprites,
-    inventory,
-  }) {
+  constructor({ position, image, frames = { max: 1 }, sprites, inventory }) {
     this.position = position;
     this.image = image;
     this.frames = { ...frames, val: 0, elapsed: 0 };
@@ -83,6 +76,11 @@ class Garden {
     this.width = 48;
     this.height = 48;
     this.cultivated = false;
+    this.currentTime = null;
+    this.growTime = null;
+    this.growStage = 1;
+    this.harvestReady = false;
+    this.coolDown = false;
   }
 
   draw() {
@@ -100,5 +98,24 @@ class Garden {
     );
   }
 
-  harvest() {}
+  grow() {
+    this.currentTime = Date.now();
+    if (this.cultivated && this.growTime === null) {
+      this.growTime = Date.now();
+    }
+    if (this.cultivated && this.currentTime > this.growTime + stageOneTime) {
+      this.image = cultivedImg2;
+      this.growStage = 2;
+    }
+    if (this.cultivated && this.currentTime > this.growTime + stageTwoTime) {
+      this.image = cultivedImg3;
+      this.growStage = 3;
+    }
+  }
+
+  harvest() {
+    if (this.cultivated && this.growStage === 3 && !this.coolDown) {
+      this.harvestReady = true;
+    }
+  }
 }

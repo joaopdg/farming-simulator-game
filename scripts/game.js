@@ -3,15 +3,22 @@
 function gameEngine() {
   window.requestAnimationFrame(gameEngine);
   background.draw();
+
+  //boundaries
   boundaries.forEach((boundary) => {
     boundary.draw();
   });
+
+  //vegetable garden
   vegGarden.forEach((garden) => {
     garden.draw();
     if (garden.cultivated) {
       garden.plant();
+      garden.grow();
+      garden.harvest();
     }
   });
+
   player.draw();
   let moving = true;
   player.moving = false;
@@ -144,7 +151,7 @@ function gameEngine() {
         movable.position.x -= 3;
       });
 
-    /*  -----------------  H  ----------------- */
+    /*  -----------------  SPACE  ----------------- */
   } else if (keys.space.pressed && lastKey === "space") {
     //garden collision
     for (let i = 0; i < vegGarden.length; i++) {
@@ -166,12 +173,34 @@ function gameEngine() {
           player.inventory.seeds.wheat--;
           garden.cultivated = true;
         }
+
+        //harvest block
+        if (garden.cultivated && garden.harvestReady) {
+          
+          /*           garden.cultivated = false;
+          garden.harvestReady = false;
+          garden.growStage = 1;
+          garden.growTime = null;
+
+          garden.coolDown = true; */
+
+          player.inventory.seeds.wheat++;
+          player.inventory.harvest.wheat++;
+          break;
+        }
         break;
       }
     }
   }
 
-  //console.log(player.inventory.seeds.wheat);
+  let prevCount = 0;
+  if (player.inventory.seeds.wheat >= prevCount) {
+    prevCount = player.inventory.seeds.wheat;
+    console.log(
+      "seeds: " + player.inventory.seeds.wheat,
+      "harvest: " + player.inventory.harvest.wheat
+    );
+  }
 }
 
 gameEngine();

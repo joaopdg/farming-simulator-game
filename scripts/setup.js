@@ -16,9 +16,17 @@ playerLeft.src = "../assets/sprites/playerLeft.png";
 const playerRight = new Image();
 playerRight.src = "../assets/sprites/playerRight.png";
 
+/* --- CULTIVATED TIME --- */
+const stageOneTime = 500; //10000
+const stageTwoTime = 1000; //20000
+
 /* --- CULTIVATED BLOCK IMAGE --- */
 const cultivedImg = new Image();
 cultivedImg.src = "./assets/sprites/cultivated.png";
+const cultivedImg2 = new Image();
+cultivedImg2.src = "./assets/sprites/cultivated2.png";
+const cultivedImg3 = new Image();
+cultivedImg3.src = "./assets/sprites/cultivated3.png";
 
 /* --- MAP IMAGE --- */
 const mapImage = new Image();
@@ -59,6 +67,9 @@ const player = new Sprite({
     wateringCan: 5,
     seeds: {
       wheat: 5,
+    },
+    harvest: {
+      wheat: 0,
     },
   },
 });
