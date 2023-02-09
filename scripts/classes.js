@@ -80,7 +80,6 @@ class Garden {
     this.growTime = null;
     this.growStage = 1;
     this.harvestReady = false;
-    this.coolDown = false;
   }
 
   draw() {
@@ -103,18 +102,26 @@ class Garden {
     if (this.cultivated && this.growTime === null) {
       this.growTime = Date.now();
     }
-    if (this.cultivated && this.currentTime > this.growTime + stageOneTime) {
+    if (
+      this.cultivated &&
+      this.growStage === 1 &&
+      this.currentTime > this.growTime + stageOneTime
+    ) {
       this.image = cultivedImg2;
       this.growStage = 2;
     }
-    if (this.cultivated && this.currentTime > this.growTime + stageTwoTime) {
+    if (
+      this.cultivated &&
+      this.growStage === 2 &&
+      this.currentTime > this.growTime + stageTwoTime
+    ) {
       this.image = cultivedImg3;
       this.growStage = 3;
     }
   }
 
   harvest() {
-    if (this.cultivated && this.growStage === 3 && !this.coolDown) {
+    if (this.cultivated && this.growStage === 3) {
       this.harvestReady = true;
     }
   }

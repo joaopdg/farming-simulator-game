@@ -48,7 +48,7 @@ gardenMap.forEach((row, i) => {
 });
 
 /* --- MOVEBLE ELEMENTS --- */
-//agrgate everything that needs to move when the player moves
+//agregate everything that needs to move when the player moves
 const movables = [background, ...boundaries, ...vegGarden];
 
 /* --- CHECK COLLISIONS --- */

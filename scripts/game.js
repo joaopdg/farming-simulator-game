@@ -169,23 +169,35 @@ function gameEngine() {
         })
       ) {
         //cultivating block
-        if (player.inventory.seeds.wheat > 0 && !garden.cultivated) {
+        if (
+          player.inventory.seeds.wheat > 0 &&
+          !garden.cultivated &&
+          garden.growStage === 1
+        ) {
           player.inventory.seeds.wheat--;
           garden.cultivated = true;
         }
 
         //harvest block
-        if (garden.cultivated && garden.harvestReady) {
-          
-          /*           garden.cultivated = false;
+        if (
+          garden.cultivated &&
+          garden.harvestReady &&
+          garden.growStage === 3
+        ) {
+          garden.cultivated = false;
           garden.harvestReady = false;
-          garden.growStage = 1;
           garden.growTime = null;
 
-          garden.coolDown = true; */
+          const randomSeeds = Math.floor(Math.random() * (3 - 1) + 1);
+          const randomItems = Math.floor(Math.random() * (4 - 1) + 1);
+          player.inventory.seeds.wheat += randomSeeds;
+          player.inventory.harvest.wheat += randomItems;
 
-          player.inventory.seeds.wheat++;
-          player.inventory.harvest.wheat++;
+          setTimeout(() => {
+            garden.growStage = 1;
+            garden.image = cultivedImg;
+          }, 2000);
+
           break;
         }
         break;

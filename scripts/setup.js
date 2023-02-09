@@ -17,8 +17,8 @@ const playerRight = new Image();
 playerRight.src = "../assets/sprites/playerRight.png";
 
 /* --- CULTIVATED TIME --- */
-const stageOneTime = 500; //10000
-const stageTwoTime = 1000; //20000
+const stageOneTime = 3000; //10000
+const stageTwoTime = 6000; //20000
 
 /* --- CULTIVATED BLOCK IMAGE --- */
 const cultivedImg = new Image();
