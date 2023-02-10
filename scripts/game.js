@@ -12,14 +12,19 @@ function gameEngine() {
   //vegetable garden
   vegGarden.forEach((garden) => {
     garden.draw();
-    if (garden.cultivated) {
+    if (garden.landPlowed && !garden.cultivated) {
+      garden.plow();
       garden.plant();
+    }
+    if (garden.cultivated) {
       garden.grow();
       garden.harvest();
+      garden.plant();
     }
   });
 
   player.draw();
+  player.drawInventory();
   let moving = true;
   player.moving = false;
 
@@ -168,25 +173,46 @@ function gameEngine() {
           },
         })
       ) {
+        //plow land
+        if (!garden.cultivated && !garden.landPlowed && player.hand === "hoe") {
+          garden.landPlowed = true;
+        }
+
         //cultivating block
         if (
           player.inventory.seeds.wheat > 0 &&
           !garden.cultivated &&
-          garden.growStage === 1
+          garden.growStage === 1 &&
+          garden.landPlowed &&
+          player.hand === "seeds"
         ) {
           player.inventory.seeds.wheat--;
           garden.cultivated = true;
+        }
+
+        //watering block
+        if (
+          garden.landPlowed &&
+          garden.cultivated &&
+          !garden.watered &&
+          player.hand === "wateringCan"
+        ) {
+          garden.watered = true;
         }
 
         //harvest block
         if (
           garden.cultivated &&
           garden.harvestReady &&
-          garden.growStage === 3
+          garden.growStage === 3 &&
+          player.hand === "empty"
         ) {
           garden.cultivated = false;
           garden.harvestReady = false;
           garden.growTime = null;
+          garden.landPlowed = false;
+          garden.watered = false;
+          garden.image = resetBlock;
 
           const randomSeeds = Math.floor(Math.random() * (3 - 1) + 1);
           const randomItems = Math.floor(Math.random() * (4 - 1) + 1);
@@ -197,21 +223,24 @@ function gameEngine() {
             garden.growStage = 1;
             garden.image = cultivedImg;
           }, 2000);
-
-          break;
         }
+
         break;
       }
     }
-  }
 
-  let prevCount = 0;
-  if (player.inventory.seeds.wheat >= prevCount) {
-    prevCount = player.inventory.seeds.wheat;
-    console.log(
-      "seeds: " + player.inventory.seeds.wheat,
-      "harvest: " + player.inventory.harvest.wheat
-    );
+    /*  -----------------  E  ----------------- */
+  } else if (keys.e.pressed && lastKey === "e") {
+    lastKey = "";
+    if (player.hand === "empty") {
+      player.hand = "hoe";
+    } else if (player.hand === "hoe") {
+      player.hand = "seeds";
+    } else if (player.hand === "seeds") {
+      player.hand = "wateringCan";
+    } else if (player.hand === "wateringCan") {
+      player.hand = "empty";
+    }
   }
 }
 

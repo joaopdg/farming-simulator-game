@@ -20,17 +20,23 @@ playerRight.src = "../assets/sprites/playerRight.png";
 const stageOneTime = 3000; //10000
 const stageTwoTime = 6000; //20000
 
+/* --- PLOWED LAND BLOCK IMAGE --- */
+const plowedLand = new Image();
+plowedLand.src = "../assets/sprites/plowedLand.png";
+
 /* --- CULTIVATED BLOCK IMAGE --- */
+const resetBlock = new Image();
+resetBlock.src = "../assets/sprites/resetBlock.png";
 const cultivedImg = new Image();
-cultivedImg.src = "./assets/sprites/cultivated.png";
+cultivedImg.src = "../assets/sprites/cultivated.png";
 const cultivedImg2 = new Image();
-cultivedImg2.src = "./assets/sprites/cultivated2.png";
+cultivedImg2.src = "../assets/sprites/cultivated2.png";
 const cultivedImg3 = new Image();
-cultivedImg3.src = "./assets/sprites/cultivated3.png";
+cultivedImg3.src = "../assets/sprites/cultivated3.png";
 
 /* --- MAP IMAGE --- */
 const mapImage = new Image();
-mapImage.src = "./assets/map/farming_io_map.png";
+mapImage.src = "../assets/map/farming_io_map.png";
 
 /* --- MAP OFFSET --- */
 const offset = {
@@ -64,7 +70,6 @@ const player = new Sprite({
     right: playerRight,
   },
   inventory: {
-    wateringCan: 5,
     seeds: {
       wheat: 5,
     },

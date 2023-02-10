@@ -16,6 +16,15 @@ class Sprite {
     this.sprites = sprites;
     /* --- */
     this.inventory = inventory;
+    this.hand = "empty";
+  }
+
+  drawInventory() {
+    ctx.fillStyle = "black";
+    ctx.font = "bold 20px Helvetica";
+    ctx.fillText(`Hand: ${this.hand}`, 15, 30);
+    ctx.fillText(`Seeds: ${this.inventory.seeds.wheat}`, 14, 55);
+    ctx.fillText(`Harvest: ${this.inventory.harvest.wheat}`, 15, 79);
   }
 
   draw() {
@@ -75,11 +84,13 @@ class Garden {
     this.image = image;
     this.width = 48;
     this.height = 48;
+    this.landPlowed = false;
     this.cultivated = false;
     this.currentTime = null;
     this.growTime = null;
     this.growStage = 1;
     this.harvestReady = false;
+    this.watered = false;
   }
 
   draw() {
@@ -97,12 +108,22 @@ class Garden {
     );
   }
 
+  plow() {
+    if (this.landPlowed && !this.cultivated && !this.imageChanged) {
+      this.image = plowedLand;
+    }
+  }
+
   grow() {
     this.currentTime = Date.now();
     if (this.cultivated && this.growTime === null) {
-      this.growTime = Date.now();
+      this.image = cultivedImg;
+      if (this.watered) {
+        this.growTime = Date.now();
+      }
     }
     if (
+      this.watered &&
       this.cultivated &&
       this.growStage === 1 &&
       this.currentTime > this.growTime + stageOneTime
@@ -111,6 +132,7 @@ class Garden {
       this.growStage = 2;
     }
     if (
+      this.watered &&
       this.cultivated &&
       this.growStage === 2 &&
       this.currentTime > this.growTime + stageTwoTime

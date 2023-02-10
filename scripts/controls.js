@@ -18,6 +18,9 @@ const keys = {
   space: {
     pressed: false,
   },
+  e: {
+    pressed: false,
+  },
 };
 
 let lastKey;
@@ -44,6 +47,10 @@ window.addEventListener("keydown", (e) => {
       keys.space.pressed = true;
       lastKey = "space";
       break;
+    case "KeyE":
+      keys.e.pressed = true;
+      lastKey = "e";
+      break;
   }
 });
 
@@ -63,6 +70,9 @@ window.addEventListener("keyup", (e) => {
       break;
     case "Space":
       keys.space.pressed = false;
+      break;
+    case "KeyE":
+      keys.e.pressed = false;
       break;
   }
 });
