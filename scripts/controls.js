@@ -79,42 +79,40 @@ window.addEventListener("keyup", (e) => {
 
 /* --- MOBILE --- */
 
-window.addEventListener("click", (e) => {
+window.addEventListener("touchstart", (e) => {
   if (e.target.classList.contains("arrowUp")) {
     keys.w.pressed = true;
     lastKey = "w";
-    setTimeout(() => {
-      keys.w.pressed = false;
-    }, 100);
   } else if (e.target.classList.contains("arrowLeft")) {
     keys.a.pressed = true;
     lastKey = "a";
-    setTimeout(() => {
-      keys.a.pressed = false;
-    }, 100);
   } else if (e.target.classList.contains("arrowDown")) {
     keys.s.pressed = true;
     lastKey = "s";
-    setTimeout(() => {
-      keys.s.pressed = false;
-    }, 100);
   } else if (e.target.classList.contains("arrowRight")) {
     keys.d.pressed = true;
     lastKey = "d";
-    setTimeout(() => {
-      keys.d.pressed = false;
-    }, 100);
   } else if (e.target.classList.contains("actionKey")) {
     keys.space.pressed = true;
     lastKey = "space";
-    setTimeout(() => {
-      keys.space.pressed = false;
-    }, 100);
   } else if (e.target.classList.contains("toolsKey")) {
     keys.e.pressed = true;
     lastKey = "e";
-    setTimeout(() => {
-      keys.e.pressed = false;
-    }, 100);
+  }
+});
+
+window.addEventListener("touchend", (e) => {
+  if (e.target.classList.contains("arrowUp")) {
+    keys.w.pressed = false;
+  } else if (e.target.classList.contains("arrowLeft")) {
+    keys.a.pressed = false;
+  } else if (e.target.classList.contains("arrowDown")) {
+    keys.s.pressed = false;
+  } else if (e.target.classList.contains("arrowRight")) {
+    keys.d.pressed = false;
+  } else if (e.target.classList.contains("actionKey")) {
+    keys.space.pressed = false;
+  } else if (e.target.classList.contains("toolsKey")) {
+    keys.e.pressed = false;
   }
 });
