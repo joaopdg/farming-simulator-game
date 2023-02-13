@@ -21,10 +21,10 @@ class Sprite {
 
   drawInventory() {
     ctx.fillStyle = "black";
-    ctx.font = "bold 20px Helvetica";
-    ctx.fillText(`Hand: ${this.hand}`, 15, 30);
-    ctx.fillText(`Seeds: ${this.inventory.seeds.wheat}`, 14, 55);
-    ctx.fillText(`Harvest: ${this.inventory.harvest.wheat}`, 15, 79);
+    ctx.font = "bold 12px Helvetica";
+    ctx.fillText(`Hand: ${this.hand}`, 390, 30);
+    ctx.fillText(`Seeds: ${this.inventory.seeds.wheat}`, 390, 45);
+    ctx.fillText(`Harvest: ${this.inventory.harvest.wheat}`, 390, 60);
   }
 
   draw() {
