@@ -76,3 +76,21 @@ window.addEventListener("keyup", (e) => {
       break;
   }
 });
+
+/* --- MOBILE --- */
+
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("arrowUp")) {
+    keys.w.pressed = true;
+    lastKey = "w";
+  } else if (e.target.classList.contains("arrowLeft")) {
+    keys.a.pressed = true;
+    lastKey = "a";
+  } else if (e.target.classList.contains("arrowDown")) {
+    keys.s.pressed = true;
+    lastKey = "s";
+  } else if (e.target.classList.contains("arrowRight")) {
+    keys.d.pressed = true;
+    lastKey = "d";
+  }
+});

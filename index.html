@@ -12,9 +12,24 @@
     <link rel="stylesheet" href="style.css" />
     <title>farming.io</title>
   </head>
+
   <body>
-    <canvas></canvas>
+    <div id="mobile-controls">
+      <div>
+        <button class="arrowUp">▲</button>
+      </div>
+      <div>
+        <button class="arrowLeft">◄</button>
+        <button class="arrowDown">▼</button>
+        <button class="arrowRight">►</button>
+      </div>
+    </div>
+
+    <div id="container">
+      <canvas></canvas>
+    </div>
   </body>
+
   <script src="assets/map/tiled/collisionsArray.js"></script>
   <script src="assets/map/tiled/gardenArray.js"></script>
   <script src="scripts/classes.js"></script>
