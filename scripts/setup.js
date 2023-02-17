@@ -38,11 +38,10 @@ cultivedImg3.src = "../assets/sprites/cultivated3.png";
 const mapImage = new Image();
 mapImage.src = "../assets/map/farming_io_map.png";
 
-/* --- MAP OFFSET --- */
+/* --- MAP OFFSET --- x:-1120 y:-580*/
 let offset = {
-  x: -1120,
-  /* y: -480, */
-  y: -580,
+  x: -318,
+  y: -170,
 };
 
 /* --- CREATE BACKGROUND --- */
@@ -80,4 +79,3 @@ let player = new Sprite({
     },
   },
 });
-

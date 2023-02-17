@@ -39,7 +39,7 @@ class Sprite {
       this.position.x,
       this.position.y,
       //width and height of image
-      this.image.width / this.frames.max,
+      this.image.width / this.frames.max ,
       this.image.height
     );
 
@@ -61,12 +61,12 @@ class Sprite {
 
 /* --- BOUNDARY CLASS --- */
 class Boundary {
-  static width = 48;
-  static height = 48;
+  static width = 24;
+  static height = 24;
   constructor({ position }) {
     this.position = position;
-    this.width = 48;
-    this.height = 48;
+    this.width = 24;
+    this.height = 24;
   }
 
   draw() {
@@ -77,13 +77,13 @@ class Boundary {
 
 /* --- GARDEN CLASS --- */
 class Garden {
-  static width = 48;
-  static height = 48;
+  static width = 24;
+  static height = 24;
   constructor({ position, image }) {
     this.position = position;
     this.image = image;
-    this.width = 48;
-    this.height = 48;
+    this.width = 24;
+    this.height = 24;
     this.landPlowed = false;
     this.cultivated = false;
     this.currentTime = null;
