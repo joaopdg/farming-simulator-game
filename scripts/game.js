@@ -1,6 +1,6 @@
 /**@type{HTMLCanvasElement} */
 
-/* --- START GAME --- */
+/* --- GAME ENGINE --- */
 function gameEngine() {
   window.requestAnimationFrame(gameEngine);
   background.draw();
@@ -57,7 +57,7 @@ function gameEngine() {
     //moving map
     if (moving)
       movables.forEach((movable) => {
-        movable.position.y += 3;
+        movable.position.y += 1.5;
       });
 
     /*  -----------------  A  ----------------- */
@@ -89,7 +89,7 @@ function gameEngine() {
     //moving map
     if (moving)
       movables.forEach((movable) => {
-        movable.position.x += 3;
+        movable.position.x += 1.5;
       });
 
     /*  -----------------  S  ----------------- */
@@ -121,7 +121,7 @@ function gameEngine() {
     //moving map
     if (moving)
       movables.forEach((movable) => {
-        movable.position.y -= 3;
+        movable.position.y -= 1.5;
       });
 
     /*  -----------------  D  ----------------- */
@@ -153,7 +153,7 @@ function gameEngine() {
     //moving map
     if (moving)
       movables.forEach((movable) => {
-        movable.position.x -= 3;
+        movable.position.x -= 1.5;
       });
 
     /*  -----------------  SPACE  ----------------- */
@@ -167,8 +167,8 @@ function gameEngine() {
           rectangle2: {
             ...garden,
             position: {
-              x: garden.position.x - 24,
-              y: garden.position.y - 24,
+              x: garden.position.x - 14,
+              y: garden.position.y - 14,
             },
           },
         })
