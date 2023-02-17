@@ -30,7 +30,7 @@ for (let i = 0; i < garden.length; i += 70) {
   gardenMap.push(garden.slice(i, 70 + i));
 }
 
-const vegGarden = [];
+let vegGarden = [];
 gardenMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
     if (symbol === 1025) {
@@ -49,7 +49,7 @@ gardenMap.forEach((row, i) => {
 
 /* --- MOVEBLE ELEMENTS --- */
 //agregate everything that needs to move when the player moves
-const movables = [background, ...boundaries, ...vegGarden];
+let movables = [background, ...boundaries, ...vegGarden];
 
 /* --- CHECK COLLISIONS --- */
 function rectangularCollision({ rectangle1, rectangle2 }) {

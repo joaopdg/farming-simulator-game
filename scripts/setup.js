@@ -39,14 +39,14 @@ const mapImage = new Image();
 mapImage.src = "../assets/map/farming_io_map.png";
 
 /* --- MAP OFFSET --- */
-const offset = {
+let offset = {
   x: -1120,
   /* y: -480, */
   y: -580,
 };
 
 /* --- CREATE BACKGROUND --- */
-const background = new Sprite({
+let background = new Sprite({
   position: {
     x: offset.x,
     y: offset.y,
@@ -55,7 +55,7 @@ const background = new Sprite({
 });
 
 /* --- CREATE PLAYER --- */
-const player = new Sprite({
+let player = new Sprite({
   position: {
     x: canvas.width / 2 - 198 / 4 / 2,
     /* y: canvas.height / 2 + 68 / 2 + 20, */
@@ -80,3 +80,4 @@ const player = new Sprite({
     },
   },
 });
+

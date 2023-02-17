@@ -99,6 +99,15 @@ class Garden {
   }
 
   plant() {
+    if (this.landPlowed && !this.cultivated && !this.imageChanged) {
+      this.image = plowedLand;
+    } else if (this.growStage === 1) {
+      this.image = cultivedImg;
+    } else if (this.growStage === 2) {
+      this.image = cultivedImg2;
+    } else if (this.growStage === 3) {
+      this.image = cultivedImg3;
+    }
     ctx.drawImage(
       this.image,
       this.position.x,
@@ -108,19 +117,10 @@ class Garden {
     );
   }
 
-  plow() {
-    if (this.landPlowed && !this.cultivated && !this.imageChanged) {
-      this.image = plowedLand;
-    }
-  }
-
   grow() {
     this.currentTime = Date.now();
-    if (this.cultivated && this.growTime === null) {
-      this.image = cultivedImg;
-      if (this.watered) {
-        this.growTime = Date.now();
-      }
+    if (this.cultivated && this.growTime === null && this.watered) {
+      this.growTime = Date.now();
     }
     if (
       this.watered &&
@@ -128,7 +128,6 @@ class Garden {
       this.growStage === 1 &&
       this.currentTime > this.growTime + stageOneTime
     ) {
-      this.image = cultivedImg2;
       this.growStage = 2;
     }
     if (
@@ -137,7 +136,6 @@ class Garden {
       this.growStage === 2 &&
       this.currentTime > this.growTime + stageTwoTime
     ) {
-      this.image = cultivedImg3;
       this.growStage = 3;
     }
   }

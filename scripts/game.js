@@ -1,5 +1,6 @@
 /**@type{HTMLCanvasElement} */
 
+/* --- START GAME --- */
 function gameEngine() {
   window.requestAnimationFrame(gameEngine);
   background.draw();
@@ -13,7 +14,6 @@ function gameEngine() {
   vegGarden.forEach((garden) => {
     garden.draw();
     if (garden.landPlowed && !garden.cultivated) {
-      garden.plow();
       garden.plant();
     }
     if (garden.cultivated) {
@@ -243,6 +243,4 @@ function gameEngine() {
     }
   }
 }
-
-
 gameEngine();

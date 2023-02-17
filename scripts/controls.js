@@ -116,3 +116,4 @@ window.addEventListener("touchend", (e) => {
     keys.e.pressed = false;
   }
 });
+
