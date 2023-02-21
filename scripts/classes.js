@@ -39,7 +39,7 @@ class Sprite {
       this.position.x,
       this.position.y,
       //width and height of image
-      this.image.width / this.frames.max ,
+      this.image.width / this.frames.max,
       this.image.height
     );
 
