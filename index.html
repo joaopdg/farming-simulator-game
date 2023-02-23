@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Prevent zoom on mobile -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
+    <!-- Favicon -->
     <link
       href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAARUVFAACz/wAUFBQAKysrAICAgAD/XgAAAAD/AAD/NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVQAAVVAAAFVVUAVXdQAFVVVVVVd1UAVVRVVVImZQBVREVVUiZlAFVUVVVViFUAVVVRVRWIVQAFVVVVVVVQAAREADAAREAAAAAAAwAAAAAAAAADAAAAAAAAADAAAAAAAAADAAAAAAAAAAMAAAAAD//wAA//8AAOPHAADBgwAAgAEAAIABAACAAQAAgAEAAIABAADAAwAAxuMAAP9/AAD/fwAA/v8AAP3/AAD9/wAA"
       rel="icon"
@@ -18,12 +19,14 @@
   </head>
 
   <body>
+    <!-- Loading Screen -->
     <div id="spinner">
       <h1>farming.io</h1>
-      <p>loading...</p>
       <img src="./assets/images/loading-spinner.gif" alt="spinner" />
+      <p>loading...</p>
     </div>
 
+    <!-- Mobile Controls -->
     <div id="mobile-controls">
       <button class="saveGame">💾</button>
       <div id="mobile-controls-1">
@@ -43,11 +46,13 @@
       </div>
     </div>
 
+    <!-- Canvas -->
     <div id="container">
       <canvas></canvas>
     </div>
   </body>
 
+  <!-- Game Scripts -->
   <script src="assets/map/tiled/collisionsArray.js"></script>
   <script src="assets/map/tiled/gardenArray.js"></script>
   <script src="scripts/classes.js"></script>

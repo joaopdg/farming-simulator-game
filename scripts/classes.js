@@ -12,7 +12,9 @@ class Sprite {
       this.width = this.image.width / this.frames.max;
       this.height = this.image.height;
       if (this.image === mapImage) {
-        document.getElementById("spinner").classList.add("hidden");
+        setTimeout(() => {
+          document.getElementById("spinner").classList.add("hidden");
+        }, 1000);
       }
     };
     this.moving = false;
