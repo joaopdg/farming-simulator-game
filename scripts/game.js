@@ -3,6 +3,9 @@
 /* --- GAME ENGINE --- */
 function gameEngine() {
   window.requestAnimationFrame(gameEngine);
+  background.onload = () => {
+    console.log('done')
+  }
   background.draw();
 
   //boundaries

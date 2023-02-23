@@ -11,6 +11,9 @@ class Sprite {
     this.image.onload = () => {
       this.width = this.image.width / this.frames.max;
       this.height = this.image.height;
+      if (this.image === mapImage) {
+        document.getElementById("spinner").classList.add("hidden");
+      }
     };
     this.moving = false;
     this.sprites = sprites;

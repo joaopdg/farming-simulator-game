@@ -1,6 +1,6 @@
 /* --- GET SAVED GAME --- */
 let savedGame = JSON.parse(localStorage.getItem("gameSaveData"));
-console.log(savedGame);
+
 /* --- LOAD SAVED GAME --- */
 if (savedGame) {
   //loading player
@@ -14,7 +14,6 @@ if (savedGame) {
   });
 
   //loading background
-
   background.position.x = savedGame.background.x;
   background.position.y = savedGame.background.y;
 
@@ -68,15 +67,10 @@ const saveGame = () => {
       x: background.position.x,
       y: background.position.y,
     },
-    offset: {
-      x: offset.x,
-      y: offset.y,
-    },
   };
 
+  //save the game on local storage
   localStorage.setItem("gameSaveData", JSON.stringify(gameSaveData));
-
-  console.log("Game saved!");
 };
 
 /* --- AUTOSAVE EVERY 10 SECONDS --- */
@@ -90,3 +84,4 @@ window.addEventListener("touchstart", (e) => {
     saveGame();
   }
 });
+
