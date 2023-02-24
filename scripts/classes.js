@@ -12,24 +12,65 @@ class Sprite {
       this.width = this.image.width / this.frames.max;
       this.height = this.image.height;
       if (this.image === mapImage) {
-        setTimeout(() => {
+        document.getElementById("spinner").classList.add("hidden");
+        /*  setTimeout(() => {
           document.getElementById("spinner").classList.add("hidden");
-        }, 1000);
+        }, 1000); */
       }
     };
     this.moving = false;
     this.sprites = sprites;
-    /* --- */
     this.inventory = inventory;
     this.hand = "empty";
   }
 
   drawInventory() {
     ctx.fillStyle = "black";
-    ctx.font = "bold 12px Helvetica";
-    ctx.fillText(`Hand: ${this.hand}`, 390, 30);
+    ctx.font = "10px Helvetica";
+
     ctx.fillText(`Seeds: ${this.inventory.seeds.wheat}`, 390, 45);
     ctx.fillText(`Harvest: ${this.inventory.harvest.wheat}`, 390, 60);
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(this.position.x - 16, this.position.y - 12, 61, 7);
+    ctx.fillRect(this.position.x - 16, this.position.y - 20, 15, 15);
+
+    ctx.fillStyle = "black";
+    ctx.fillText("username", this.position.x, this.position.y - 13);
+
+    if (this.hand === "water") {
+      ctx.drawImage(
+        wateringCan,
+        this.position.x - 15,
+        this.position.y - 20,
+        14,
+        14
+      );
+    } else if (this.hand === "seeds") {
+      ctx.drawImage(
+        seedsImage,
+        this.position.x - 15,
+        this.position.y - 20,
+        14,
+        14
+      );
+    } else if (this.hand === "empty") {
+      ctx.drawImage(
+        emptyHand,
+        this.position.x - 15,
+        this.position.y - 20,
+        14,
+        14
+      );
+    } else if (this.hand === "hoe") {
+      ctx.drawImage(
+        hoeImage,
+        this.position.x - 15,
+        this.position.y - 20,
+        14,
+        14
+      );
+    }
   }
 
   draw() {

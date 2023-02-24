@@ -3,17 +3,16 @@
 /* --- GAME ENGINE --- */
 function gameEngine() {
   window.requestAnimationFrame(gameEngine);
-  background.onload = () => {
-    console.log('done')
-  }
+
+  //draw map
   background.draw();
 
-  //boundaries
+  //draw boundaries
   boundaries.forEach((boundary) => {
     boundary.draw();
   });
 
-  //vegetable garden
+  //draw vegetable garden
   vegGarden.forEach((garden) => {
     garden.draw();
     if (garden.landPlowed && !garden.cultivated) {
@@ -26,6 +25,7 @@ function gameEngine() {
     }
   });
 
+  //draw player
   player.draw();
   player.drawInventory();
   let moving = true;
@@ -198,7 +198,7 @@ function gameEngine() {
           garden.landPlowed &&
           garden.cultivated &&
           !garden.watered &&
-          player.hand === "wateringCan"
+          player.hand === "water"
         ) {
           garden.watered = true;
         }
@@ -240,8 +240,8 @@ function gameEngine() {
     } else if (player.hand === "hoe") {
       player.hand = "seeds";
     } else if (player.hand === "seeds") {
-      player.hand = "wateringCan";
-    } else if (player.hand === "wateringCan") {
+      player.hand = "water";
+    } else if (player.hand === "water") {
       player.hand = "empty";
     }
   }

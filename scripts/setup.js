@@ -6,6 +6,10 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1024;
 canvas.height = 576;
 
+/* --- CULTIVATED TIME --- */
+const stageOneTime = 3000; //10000
+const stageTwoTime = 6000; //20000
+
 /* --- PLAYER IMAGES --- */
 const playerUp = new Image();
 playerUp.src = "../assets/sprites/playerUp.png";
@@ -15,10 +19,6 @@ const playerLeft = new Image();
 playerLeft.src = "../assets/sprites/playerLeft.png";
 const playerRight = new Image();
 playerRight.src = "../assets/sprites/playerRight.png";
-
-/* --- CULTIVATED TIME --- */
-const stageOneTime = 3000; //10000
-const stageTwoTime = 6000; //20000
 
 /* --- PLOWED LAND BLOCK IMAGE --- */
 const plowedLand = new Image();
@@ -37,6 +37,16 @@ cultivedImg3.src = "../assets/sprites/cultivated3.png";
 /* --- MAP IMAGE --- */
 const mapImage = new Image();
 mapImage.src = "../assets/map/farming_io_map.png";
+
+/* --- TOOLS IMAGE --- */
+const wateringCan = new Image()
+wateringCan.src = '../assets/sprites/wateringCan.png'
+const emptyHand = new Image()
+emptyHand.src = '../assets/sprites/emptyHand.png'
+const hoeImage = new Image()
+hoeImage.src = '../assets/sprites/hoeImage.png'
+const seedsImage = new Image()
+seedsImage.src = '../assets/sprites/seedsImage.png'
 
 /* --- MAP OFFSET --- x:-1120 y:-580*/
 let offset = {
