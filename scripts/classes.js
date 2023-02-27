@@ -116,26 +116,26 @@ class Sprite {
     ctx.fillStyle = "gray";
     ctx.fillRect(
       canvas.width / 2 - 110,
-      canvas.height - canvas.height / 2 - 140,
+      canvas.height - canvas.height / 2 - 100,
       220,
-      280
+      200
     );
     ctx.fillStyle = "white";
     ctx.font = "bold 10px Helvetica";
     ctx.fillText(
       `YOUR INVENTORY:`,
       canvas.width / 2 - 100,
-      canvas.height - canvas.height / 2 - 120
+      canvas.height - canvas.height / 2 - 80
     );
     ctx.fillText(
       `Seeds: ${this.inventory.seeds.quantity}`,
       canvas.width / 2 - 80,
-      canvas.height - canvas.height / 2 - 90
+      canvas.height - canvas.height / 2 - 50
     );
     ctx.fillText(
       `Harvest: ${this.inventory.harvest.quantity}`,
       canvas.width / 2 - 80,
-      canvas.height - canvas.height / 2 - 75
+      canvas.height - canvas.height / 2 - 35
     );
   }
 
@@ -143,21 +143,21 @@ class Sprite {
     ctx.fillStyle = "gray";
     ctx.fillRect(
       canvas.width / 2 - 110,
-      canvas.height - canvas.height / 2 - 140,
+      canvas.height - canvas.height / 2 - 100,
       220,
-      280
+      200
     );
     ctx.fillStyle = "white";
     ctx.font = "bold 10px Helvetica";
     ctx.fillText(
       `YOUR QUESTS:`,
       canvas.width / 2 - 100,
-      canvas.height - canvas.height / 2 - 120
+      canvas.height - canvas.height / 2 - 80
     );
     ctx.fillText(
       `Plant 20 seeds ............... (0/20)`,
       canvas.width / 2 - 80,
-      canvas.height - canvas.height / 2 - 90
+      canvas.height - canvas.height / 2 - 50
     );
   }
 
@@ -165,16 +165,16 @@ class Sprite {
     ctx.fillStyle = "gray";
     ctx.fillRect(
       canvas.width / 2 - 110,
-      canvas.height - canvas.height / 2 - 140,
+      canvas.height - canvas.height / 2 - 100,
       220,
-      280
+      200
     );
     ctx.fillStyle = "white";
     ctx.font = "bold 10px Helvetica";
     ctx.fillText(
       `WELCOME TO YOUR PROFILE:`,
       canvas.width / 2 - 100,
-      canvas.height - canvas.height / 2 - 120
+      canvas.height - canvas.height / 2 - 80
     );
   }
 }
