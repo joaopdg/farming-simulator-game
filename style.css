@@ -101,8 +101,10 @@ html body {
   }
 
   #closeScreen {
-    margin-bottom: 40vh;
-    margin-left: 68vw;
+    padding-top: 55px;
+    padding-left: 335px;
+    background-color: rgba(125, 125, 125, 0);
+    border: none;
   }
 }
 
