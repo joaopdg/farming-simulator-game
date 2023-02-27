@@ -1,7 +1,7 @@
 /**@type{HTMLCanvasElement} */
 
 /* --- CONTROLS --- */
-
+let lastKey;
 const keys = {
   w: {
     pressed: false,
@@ -15,16 +15,12 @@ const keys = {
   d: {
     pressed: false,
   },
-  space: {
-    pressed: false,
-  },
   e: {
     pressed: false,
   },
 };
 
-let lastKey;
-
+/* --- DESKTOP --- */
 window.addEventListener("keydown", (e) => {
   switch (e.code) {
     case "KeyW":
@@ -42,10 +38,6 @@ window.addEventListener("keydown", (e) => {
     case "KeyD":
       keys.d.pressed = true;
       lastKey = "d";
-      break;
-    case "Space":
-      keys.space.pressed = true;
-      lastKey = "space";
       break;
     case "KeyE":
       keys.e.pressed = true;
@@ -68,9 +60,6 @@ window.addEventListener("keyup", (e) => {
     case "KeyD":
       keys.d.pressed = false;
       break;
-    case "Space":
-      keys.space.pressed = false;
-      break;
     case "KeyE":
       keys.e.pressed = false;
       break;
@@ -78,7 +67,6 @@ window.addEventListener("keyup", (e) => {
 });
 
 /* --- MOBILE --- */
-
 window.addEventListener("touchstart", (e) => {
   if (e.target.classList.contains("arrowUp")) {
     keys.w.pressed = true;
@@ -92,9 +80,6 @@ window.addEventListener("touchstart", (e) => {
   } else if (e.target.classList.contains("arrowRight")) {
     keys.d.pressed = true;
     lastKey = "d";
-  } else if (e.target.classList.contains("actionKey")) {
-    keys.space.pressed = true;
-    lastKey = "space";
   } else if (e.target.classList.contains("toolsKey")) {
     keys.e.pressed = true;
     lastKey = "e";
@@ -110,8 +95,6 @@ window.addEventListener("touchend", (e) => {
     keys.s.pressed = false;
   } else if (e.target.classList.contains("arrowRight")) {
     keys.d.pressed = false;
-  } else if (e.target.classList.contains("actionKey")) {
-    keys.space.pressed = false;
   } else if (e.target.classList.contains("toolsKey")) {
     keys.e.pressed = false;
   }

@@ -159,91 +159,90 @@ function gameEngine() {
         movable.position.x -= 1.5;
       });
 
-    /*  -----------------  SPACE  ----------------- */
-  } else if (keys.space.pressed && lastKey === "space") {
-    //garden collision
-    for (let i = 0; i < vegGarden.length; i++) {
-      const garden = vegGarden[i];
-      if (
-        rectangularCollision({
-          rectangle1: player,
-          rectangle2: {
-            ...garden,
-            position: {
-              x: garden.position.x - 14,
-              y: garden.position.y - 14,
-            },
-          },
-        })
-      ) {
-        //plow land
-        if (!garden.cultivated && !garden.landPlowed && player.hand === "hoe") {
-          garden.landPlowed = true;
-        }
-
-        //cultivating block
-        if (
-          player.inventory.seeds.wheat > 0 &&
-          !garden.cultivated &&
-          garden.growStage === 1 &&
-          garden.landPlowed &&
-          player.hand === "seeds"
-        ) {
-          player.inventory.seeds.wheat--;
-          garden.cultivated = true;
-        }
-
-        //watering block
-        if (
-          garden.landPlowed &&
-          garden.cultivated &&
-          !garden.watered &&
-          player.hand === "water"
-        ) {
-          garden.watered = true;
-        }
-
-        //harvest block
-        if (
-          garden.cultivated &&
-          garden.harvestReady &&
-          garden.growStage === 3 &&
-          player.hand === "empty"
-        ) {
-          garden.cultivated = false;
-          garden.harvestReady = false;
-          garden.growTime = null;
-          garden.landPlowed = false;
-          garden.watered = false;
-          garden.image = resetBlock;
-
-          const randomSeeds = Math.floor(Math.random() * (3 - 1) + 1);
-          const randomItems = Math.floor(Math.random() * (4 - 1) + 1);
-          player.inventory.seeds.wheat += randomSeeds;
-          player.inventory.harvest.wheat += randomItems;
-
-          setTimeout(() => {
-            garden.growStage = 1;
-            garden.image = cultivedImg;
-          }, 2000);
-        }
-
-        break;
-      }
-    }
-
     /*  -----------------  E  ----------------- */
   } else if (keys.e.pressed && lastKey === "e") {
     lastKey = "";
-    if (player.hand === "empty") {
-      player.hand = "hoe";
-    } else if (player.hand === "hoe") {
-      player.hand = "seeds";
-    } else if (player.hand === "seeds") {
-      player.hand = "water";
-    } else if (player.hand === "water") {
-      player.hand = "empty";
+    if (player.hand === player.tools[0]) {
+      player.hand = player.tools[1];
+    } else if (player.hand === player.tools[1]) {
+      player.hand = player.tools[2];
+    } else if (player.hand === player.tools[2]) {
+      player.hand = player.tools[3];
+    } else if (player.hand === player.tools[3]) {
+      player.hand = player.tools[0];
+    }
+  }
+
+  /*  -----------------  SPACE  ----------------- */
+  //garden collision
+  for (let i = 0; i < vegGarden.length; i++) {
+    const garden = vegGarden[i];
+    if (
+      rectangularCollision({
+        rectangle1: player,
+        rectangle2: {
+          ...garden,
+          position: {
+            x: garden.position.x - 14,
+            y: garden.position.y - 14,
+          },
+        },
+      })
+    ) {
+      //plow land
+      if (!garden.cultivated && !garden.landPlowed && player.hand === player.tools[0]) {
+        garden.landPlowed = true;
+      }
+
+      //cultivating block
+      if (
+        player.inventory.seeds.wheat > 0 &&
+        !garden.cultivated &&
+        garden.growStage === 1 &&
+        garden.landPlowed &&
+        player.hand === player.tools[1]
+      ) {
+        player.inventory.seeds.wheat--;
+        garden.cultivated = true;
+      }
+
+      //watering block
+      if (
+        garden.landPlowed &&
+        garden.cultivated &&
+        !garden.watered &&
+        player.hand === player.tools[2]
+      ) {
+        garden.watered = true;
+      }
+
+      //harvest block
+      if (
+        garden.cultivated &&
+        garden.harvestReady &&
+        garden.growStage === 3 &&
+        player.hand === player.tools[3]
+      ) {
+        garden.cultivated = false;
+        garden.harvestReady = false;
+        garden.growTime = null;
+        garden.landPlowed = false;
+        garden.watered = false;
+        garden.image = resetBlock;
+
+        const randomSeeds = Math.floor(Math.random() * (3 - 1) + 1);
+        const randomItems = Math.floor(Math.random() * (4 - 1) + 1);
+        player.inventory.seeds.wheat += randomSeeds;
+        player.inventory.harvest.wheat += randomItems;
+
+        setTimeout(() => {
+          garden.growStage = 1;
+          garden.image = cultivedImg;
+        }, 2000);
+      }
+      break;
     }
   }
 }
+
 gameEngine();

@@ -21,7 +21,8 @@ class Sprite {
     this.moving = false;
     this.sprites = sprites;
     this.inventory = inventory;
-    this.hand = "empty";
+    this.tools = ['hoe', 'seeds', 'water', 'sickle']
+    this.hand = this.tools[0];
   }
 
   drawInventory() {
@@ -38,7 +39,7 @@ class Sprite {
     ctx.fillStyle = "black";
     ctx.fillText("username", this.position.x, this.position.y - 13);
 
-    if (this.hand === "water") {
+    if (this.hand === player.tools[2]) {
       ctx.drawImage(
         wateringCan,
         this.position.x - 15,
@@ -46,7 +47,7 @@ class Sprite {
         14,
         14
       );
-    } else if (this.hand === "seeds") {
+    } else if (this.hand === player.tools[1]) {
       ctx.drawImage(
         seedsImage,
         this.position.x - 15,
@@ -54,7 +55,7 @@ class Sprite {
         14,
         14
       );
-    } else if (this.hand === "empty") {
+    } else if (this.hand === player.tools[3]) {
       ctx.drawImage(
         emptyHand,
         this.position.x - 15,
@@ -62,7 +63,7 @@ class Sprite {
         14,
         14
       );
-    } else if (this.hand === "hoe") {
+    } else if (this.hand === player.tools[0]) {
       ctx.drawImage(
         hoeImage,
         this.position.x - 15,

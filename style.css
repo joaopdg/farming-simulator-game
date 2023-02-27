@@ -1,16 +1,17 @@
+/* -------- GLOBAL -------- */
 html body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgb(103, 230, 210);
-  overflow: hidden;
 }
 
 .hidden {
   display: none !important;
 }
 
+/* -------- MOBILE -------- */
 @media only screen and (max-width: 600px) {
   * {
     -webkit-user-select: none;
@@ -35,16 +36,16 @@ html body {
   }
 
   button {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid grey;
     border-radius: 10px;
   }
 
   button:active {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid grey;
     border-radius: 10px;
@@ -78,6 +79,7 @@ html body {
     display: flex;
     justify-content: space-evenly;
     margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   #container {
@@ -94,12 +96,17 @@ html body {
   }
 }
 
+/* -------- DESKTOP -------- */
 @media screen and (min-width: 700px) {
   #mobile-controls-1 {
     display: none !important;
   }
 
   #mobile-controls-2 {
+    display: none !important;
+  }
+
+  #spinner {
     display: none !important;
   }
 }
