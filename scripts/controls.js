@@ -100,3 +100,11 @@ window.addEventListener("touchend", (e) => {
   }
 });
 
+/* --- SCREENS (CHEST, QUESTS) --- */
+window.addEventListener("touchstart", (e) => {
+  if (e.target.classList.contains("chest")) {
+    document.getElementById("chestDiv").classList.remove("visibility");
+  } else if (e.target.classList.contains("close-chestDiv")) {
+    document.getElementById("chestDiv").classList.add("visibility");
+  }
+});

@@ -11,7 +11,18 @@ html body {
 }
 
 .hidden {
+  visibility: hidden;
   display: none !important;
+}
+
+.visibility {
+  visibility: hidden !important;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
 }
 
 /* -------- MOBILE -------- */
@@ -20,6 +31,19 @@ html body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+
+  #container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  canvas {
+    height: inherit;
   }
 
   #spinner {
@@ -38,7 +62,7 @@ html body {
     width: 100px;
   }
 
-  button {
+  .button {
     width: 60px;
     height: 60px;
     background-color: rgba(255, 255, 255, 0.5);
@@ -46,7 +70,7 @@ html body {
     border-radius: 10px;
   }
 
-  button:active {
+  .button:active {
     width: 60px;
     height: 60px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -54,27 +78,23 @@ html body {
     border-radius: 10px;
   }
 
-  .saveGame {
-    margin: 10px;
-  }
-
   #mobile-controls {
     width: 100%;
-    height: 97%;
+    height: 100%;
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   #mobile-controls-1 {
-    width: inherit;
-    height: inherit;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 50px;
   }
 
   #mobile-controls-2 {
@@ -85,17 +105,18 @@ html body {
     margin-bottom: 5px;
   }
 
-  #container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  .screenDiv {
+    margin-top: 10vh;
+    height: 50vh;
+    margin-left: 10vw;
+    width: 80vw;
+    background-color: grey;
   }
 
-  canvas {
-    height: inherit;
+  .screenDiv-x {
+    width: inherit;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
