@@ -62,6 +62,7 @@ class Sprite {
     ctx.fillRect(this.position.x - 16, this.position.y - 20, 15, 15);
 
     ctx.fillStyle = "black";
+    ctx.font = "bold 10px Helvetica";
     ctx.fillText("username", this.position.x, this.position.y - 12);
 
     if (this.toolsCooldown > 0) {
@@ -69,7 +70,7 @@ class Sprite {
       ctx.fillRect(this.position.x, this.position.y - 9, this.toolsCooldown, 4);
     }
 
-    if (this.hand === player.tools[2]) {
+    if (this.hand === this.tools[2]) {
       ctx.drawImage(
         wateringCan,
         this.position.x - 15,
@@ -77,7 +78,7 @@ class Sprite {
         14,
         14
       );
-    } else if (this.hand === player.tools[1]) {
+    } else if (this.hand === this.tools[1]) {
       ctx.drawImage(
         seedsImage,
         this.position.x - 15,
@@ -85,7 +86,14 @@ class Sprite {
         14,
         14
       );
-    } else if (this.hand === player.tools[3]) {
+      ctx.font = "bold 7px Helvetica";
+      ctx.fillStyle = "black";
+      ctx.fillText(
+        `${this.inventory.seeds.quantity}`,
+        this.position.x - 15,
+        this.position.y - 6
+      );
+    } else if (this.hand === this.tools[3]) {
       ctx.drawImage(
         emptyHand,
         this.position.x - 15,
@@ -93,7 +101,7 @@ class Sprite {
         14,
         14
       );
-    } else if (this.hand === player.tools[0]) {
+    } else if (this.hand === this.tools[0]) {
       ctx.drawImage(
         hoeImage,
         this.position.x - 15,
@@ -120,12 +128,12 @@ class Sprite {
       canvas.height - canvas.height / 2 - 120
     );
     ctx.fillText(
-      `Seeds: ${this.inventory.seeds.wheat}`,
+      `Seeds: ${this.inventory.seeds.quantity}`,
       canvas.width / 2 - 80,
       canvas.height - canvas.height / 2 - 90
     );
     ctx.fillText(
-      `Harvest: ${this.inventory.harvest.wheat}`,
+      `Harvest: ${this.inventory.harvest.quantity}`,
       canvas.width / 2 - 80,
       canvas.height - canvas.height / 2 - 75
     );
@@ -153,7 +161,7 @@ class Sprite {
     );
   }
 
-  drawProfile(){
+  drawProfile() {
     ctx.fillStyle = "gray";
     ctx.fillRect(
       canvas.width / 2 - 110,

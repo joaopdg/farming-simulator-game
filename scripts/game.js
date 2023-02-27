@@ -202,13 +202,13 @@ function gameEngine() {
 
         //cultivating block
         if (
-          player.inventory.seeds.wheat > 0 &&
+          player.inventory.seeds.quantity > 0 &&
           !garden.cultivated &&
           garden.growStage === 1 &&
           garden.landPlowed &&
           player.hand === player.tools[1]
         ) {
-          player.inventory.seeds.wheat--;
+          player.inventory.seeds.quantity--;
           garden.cultivated = true;
           player.toolsCooldown -= 10;
         }
@@ -240,8 +240,8 @@ function gameEngine() {
 
           const randomSeeds = Math.floor(Math.random() * (3 - 1) + 1);
           const randomItems = Math.floor(Math.random() * (4 - 1) + 1);
-          player.inventory.seeds.wheat += randomSeeds;
-          player.inventory.harvest.wheat += randomItems;
+          player.inventory.seeds.quantity += randomSeeds;
+          player.inventory.harvest.quantity += randomItems;
 
           setTimeout(() => {
             garden.growStage = 1;
@@ -263,11 +263,11 @@ function gameEngine() {
   //screens
   if (document.getElementById("chestDiv").classList.contains("opened")) {
     player.drawChest();
-  }  else if (
+  } else if (
     document.getElementById("questsDiv").classList.contains("opened")
   ) {
     player.drawQuests();
-  }  else if (
+  } else if (
     document.getElementById("profileDiv").classList.contains("opened")
   ) {
     player.drawProfile();

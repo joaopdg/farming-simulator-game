@@ -101,8 +101,10 @@ window.addEventListener("touchend", (e) => {
 });
 
 /* --- SCREENS --- */
+let screenOpen = false;
 window.addEventListener("touchstart", (e) => {
-  if (e.target.classList.contains("icon")) {
+  if (e.target.classList.contains("icon") && !screenOpen) {
+    screenOpen = true;
     e.target.classList.add("opened");
     document.getElementById("closeScreen").classList.remove("hidden");
   }
@@ -110,18 +112,22 @@ window.addEventListener("touchstart", (e) => {
     document.getElementById("closeScreen").classList.add("hidden");
     if (document.getElementById("chestDiv").classList.contains("opened")) {
       document.getElementById("chestDiv").classList.remove("opened");
+      screenOpen = false;
     } else if (
       document.getElementById("questsDiv").classList.contains("opened")
     ) {
       document.getElementById("questsDiv").classList.remove("opened");
+      screenOpen = false;
     } else if (
       document.getElementById("profileDiv").classList.contains("opened")
     ) {
       document.getElementById("profileDiv").classList.remove("opened");
+      screenOpen = false;
     } else if (
       document.getElementById("prizesDiv").classList.contains("opened")
     ) {
       document.getElementById("prizesDiv").classList.remove("opened");
+      screenOpen = false;
     }
   }
 });

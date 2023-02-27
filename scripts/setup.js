@@ -82,10 +82,10 @@ let player = new Sprite({
   },
   inventory: {
     seeds: {
-      wheat: 5,
+      quantity: 5,
     },
     harvest: {
-      wheat: 0,
+      quantity: 0,
     },
   },
 });
