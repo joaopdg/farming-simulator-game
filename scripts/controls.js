@@ -100,11 +100,28 @@ window.addEventListener("touchend", (e) => {
   }
 });
 
-/* --- SCREENS (CHEST, QUESTS) --- */
+/* --- SCREENS --- */
 window.addEventListener("touchstart", (e) => {
-  if (e.target.classList.contains("chest")) {
-    document.getElementById("chestDiv").classList.remove("visibility");
-  } else if (e.target.classList.contains("close-chestDiv")) {
-    document.getElementById("chestDiv").classList.add("visibility");
+  if (e.target.classList.contains("icon")) {
+    e.target.classList.add("opened");
+    document.getElementById("closeScreen").classList.remove("hidden");
+  }
+  if (e.target.classList.contains("closeButton")) {
+    document.getElementById("closeScreen").classList.add("hidden");
+    if (document.getElementById("chestDiv").classList.contains("opened")) {
+      document.getElementById("chestDiv").classList.remove("opened");
+    } else if (
+      document.getElementById("questsDiv").classList.contains("opened")
+    ) {
+      document.getElementById("questsDiv").classList.remove("opened");
+    } else if (
+      document.getElementById("profileDiv").classList.contains("opened")
+    ) {
+      document.getElementById("profileDiv").classList.remove("opened");
+    } else if (
+      document.getElementById("prizesDiv").classList.contains("opened")
+    ) {
+      document.getElementById("prizesDiv").classList.remove("opened");
+    }
   }
 });

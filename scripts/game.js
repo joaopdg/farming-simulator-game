@@ -27,7 +27,7 @@ function gameEngine() {
 
   //draw player
   player.draw();
-  player.drawInventory();
+  player.drawHand();
   let moving = true;
   player.moving = false;
 
@@ -254,9 +254,28 @@ function gameEngine() {
       }
     }
   }
+
+  //regenerating cooldown
   if (player.toolsCooldown < 45) {
     player.toolsCooldown += 0.05;
   }
+
+  //screens
+  if (document.getElementById("chestDiv").classList.contains("opened")) {
+    player.drawChest();
+  }  else if (
+    document.getElementById("questsDiv").classList.contains("opened")
+  ) {
+    player.drawQuests();
+  }  else if (
+    document.getElementById("profileDiv").classList.contains("opened")
+  ) {
+    player.drawProfile();
+  } /* else if (
+    document.getElementById("prizesDiv").classList.contains("opened")
+  ) {
+    player.drawPrizes();
+  } */
 }
 
 gameEngine();

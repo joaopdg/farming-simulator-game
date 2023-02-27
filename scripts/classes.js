@@ -26,12 +26,38 @@ class Sprite {
     this.hand = this.tools[0];
   }
 
-  drawInventory() {
-    ctx.fillStyle = "black";
-    ctx.font = "10px Helvetica";
-    ctx.fillText(`Seeds: ${this.inventory.seeds.wheat}`, 390, 45);
-    ctx.fillText(`Harvest: ${this.inventory.harvest.wheat}`, 390, 60);
+  draw() {
+    ctx.drawImage(
+      this.image,
+      //cropping sprite sheet x, y, w, h
+      this.frames.val * this.width,
+      0,
+      this.image.width / this.frames.max,
+      this.image.height,
+      //starting point to draw image
+      this.position.x,
+      this.position.y,
+      //width and height of image
+      this.image.width / this.frames.max,
+      this.image.height
+    );
 
+    if (!this.moving) return;
+
+    if (this.frames.max > 1) {
+      this.frames.elapsed++;
+    }
+
+    if (this.frames.elapsed % 10 === 0) {
+      if (this.frames.val < this.frames.max - 1) {
+        this.frames.val++;
+      } else {
+        this.frames.val = 0;
+      }
+    }
+  }
+
+  drawHand() {
     ctx.fillStyle = "white";
     ctx.fillRect(this.position.x - 16, this.position.y - 20, 15, 15);
 
@@ -78,35 +104,70 @@ class Sprite {
     }
   }
 
-  draw() {
-    ctx.drawImage(
-      this.image,
-      //cropping sprite sheet x, y, w, h
-      this.frames.val * this.width,
-      0,
-      this.image.width / this.frames.max,
-      this.image.height,
-      //starting point to draw image
-      this.position.x,
-      this.position.y,
-      //width and height of image
-      this.image.width / this.frames.max,
-      this.image.height
+  drawChest() {
+    ctx.fillStyle = "gray";
+    ctx.fillRect(
+      canvas.width / 2 - 110,
+      canvas.height - canvas.height / 2 - 140,
+      220,
+      280
     );
+    ctx.fillStyle = "white";
+    ctx.font = "bold 10px Helvetica";
+    ctx.fillText(
+      `YOUR INVENTORY:`,
+      canvas.width / 2 - 100,
+      canvas.height - canvas.height / 2 - 120
+    );
+    ctx.fillText(
+      `Seeds: ${this.inventory.seeds.wheat}`,
+      canvas.width / 2 - 80,
+      canvas.height - canvas.height / 2 - 90
+    );
+    ctx.fillText(
+      `Harvest: ${this.inventory.harvest.wheat}`,
+      canvas.width / 2 - 80,
+      canvas.height - canvas.height / 2 - 75
+    );
+  }
 
-    if (!this.moving) return;
+  drawQuests() {
+    ctx.fillStyle = "gray";
+    ctx.fillRect(
+      canvas.width / 2 - 110,
+      canvas.height - canvas.height / 2 - 140,
+      220,
+      280
+    );
+    ctx.fillStyle = "white";
+    ctx.font = "bold 10px Helvetica";
+    ctx.fillText(
+      `YOUR QUESTS:`,
+      canvas.width / 2 - 100,
+      canvas.height - canvas.height / 2 - 120
+    );
+    ctx.fillText(
+      `Plant 20 seeds ............... (0/20)`,
+      canvas.width / 2 - 80,
+      canvas.height - canvas.height / 2 - 90
+    );
+  }
 
-    if (this.frames.max > 1) {
-      this.frames.elapsed++;
-    }
-
-    if (this.frames.elapsed % 10 === 0) {
-      if (this.frames.val < this.frames.max - 1) {
-        this.frames.val++;
-      } else {
-        this.frames.val = 0;
-      }
-    }
+  drawProfile(){
+    ctx.fillStyle = "gray";
+    ctx.fillRect(
+      canvas.width / 2 - 110,
+      canvas.height - canvas.height / 2 - 140,
+      220,
+      280
+    );
+    ctx.fillStyle = "white";
+    ctx.font = "bold 10px Helvetica";
+    ctx.fillText(
+      `WELCOME TO YOUR PROFILE:`,
+      canvas.width / 2 - 100,
+      canvas.height - canvas.height / 2 - 120
+    );
   }
 }
 
