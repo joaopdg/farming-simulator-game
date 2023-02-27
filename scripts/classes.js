@@ -21,23 +21,27 @@ class Sprite {
     this.moving = false;
     this.sprites = sprites;
     this.inventory = inventory;
-    this.tools = ['hoe', 'seeds', 'water', 'sickle']
+    this.tools = ["hoe", "seeds", "water", "sickle"];
+    this.toolsCooldown = 45;
     this.hand = this.tools[0];
   }
 
   drawInventory() {
     ctx.fillStyle = "black";
     ctx.font = "10px Helvetica";
-
     ctx.fillText(`Seeds: ${this.inventory.seeds.wheat}`, 390, 45);
     ctx.fillText(`Harvest: ${this.inventory.harvest.wheat}`, 390, 60);
 
     ctx.fillStyle = "white";
-    ctx.fillRect(this.position.x - 16, this.position.y - 12, 61, 7);
     ctx.fillRect(this.position.x - 16, this.position.y - 20, 15, 15);
 
     ctx.fillStyle = "black";
-    ctx.fillText("username", this.position.x, this.position.y - 13);
+    ctx.fillText("username", this.position.x, this.position.y - 12);
+
+    if (this.toolsCooldown > 0) {
+      ctx.fillStyle = "red";
+      ctx.fillRect(this.position.x, this.position.y - 9, this.toolsCooldown, 4);
+    }
 
     if (this.hand === player.tools[2]) {
       ctx.drawImage(

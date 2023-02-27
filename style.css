@@ -5,6 +5,9 @@ html body {
   width: 100vw;
   height: 100vh;
   background-color: rgb(103, 230, 210);
+  overflow: hidden;
+  min-zoom: 100%;
+  max-zoom: 100%;
 }
 
 .hidden {
