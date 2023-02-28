@@ -1,8 +1,6 @@
 /**@type{HTMLCanvasElement} */
 
-const oppacity = 0.0;
-
-/* --- SPRITE CLASS --- */
+/* --- PLAYER AND BG CLASS --- */
 class Sprite {
   constructor({ position, image, frames = { max: 1 }, sprites, inventory }) {
     this.position = position;
@@ -11,12 +9,6 @@ class Sprite {
     this.image.onload = () => {
       this.width = this.image.width / this.frames.max;
       this.height = this.image.height;
-      if (this.image === mapImage) {
-        document.getElementById("spinner").classList.add("hidden");
-        /*  setTimeout(() => {
-          document.getElementById("spinner").classList.add("hidden");
-        }, 1000); */
-      }
     };
     this.moving = false;
     this.sprites = sprites;
@@ -176,93 +168,5 @@ class Sprite {
       canvas.width / 2 - 100,
       canvas.height - canvas.height / 2 - 80
     );
-  }
-}
-
-/* --- BOUNDARY CLASS --- */
-class Boundary {
-  static width = 24;
-  static height = 24;
-  constructor({ position }) {
-    this.position = position;
-    this.width = 24;
-    this.height = 24;
-  }
-
-  draw() {
-    ctx.fillStyle = `rgba(255, 0, 0, ${oppacity})`;
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-  }
-}
-
-/* --- GARDEN CLASS --- */
-class Garden {
-  static width = 24;
-  static height = 24;
-  constructor({ position, image }) {
-    this.position = position;
-    this.image = image;
-    this.width = 24;
-    this.height = 24;
-    this.landPlowed = false;
-    this.cultivated = false;
-    this.currentTime = null;
-    this.growTime = null;
-    this.growStage = 1;
-    this.harvestReady = false;
-    this.watered = false;
-  }
-
-  draw() {
-    ctx.fillStyle = `rgba(0, 0, 255, ${oppacity})`;
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-  }
-
-  plant() {
-    if (this.landPlowed && !this.cultivated && !this.imageChanged) {
-      this.image = plowedLand;
-    } else if (this.growStage === 1) {
-      this.image = cultivedImg;
-    } else if (this.growStage === 2) {
-      this.image = cultivedImg2;
-    } else if (this.growStage === 3) {
-      this.image = cultivedImg3;
-    }
-    ctx.drawImage(
-      this.image,
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height
-    );
-  }
-
-  grow() {
-    this.currentTime = Date.now();
-    if (this.cultivated && this.growTime === null && this.watered) {
-      this.growTime = Date.now();
-    }
-    if (
-      this.watered &&
-      this.cultivated &&
-      this.growStage === 1 &&
-      this.currentTime > this.growTime + stageOneTime
-    ) {
-      this.growStage = 2;
-    }
-    if (
-      this.watered &&
-      this.cultivated &&
-      this.growStage === 2 &&
-      this.currentTime > this.growTime + stageTwoTime
-    ) {
-      this.growStage = 3;
-    }
-  }
-
-  harvest() {
-    if (this.cultivated && this.growStage === 3) {
-      this.harvestReady = true;
-    }
   }
 }
