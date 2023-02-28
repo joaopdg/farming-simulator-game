@@ -62,21 +62,26 @@ class Sprite {
 
   drawHand() {
     ctx.fillStyle = "white";
-    ctx.fillRect(this.position.x - 16, this.position.y - 20, 15, 15);
+    ctx.fillRect(this.position.x - 21, this.position.y - 20, 15, 15);
 
     ctx.fillStyle = "black";
     ctx.font = "bold 10px Helvetica";
-    ctx.fillText("username", this.position.x, this.position.y - 12);
+    ctx.fillText("username", this.position.x - 5, this.position.y - 12);
 
     if (this.toolsCooldown > 0) {
       ctx.fillStyle = "red";
-      ctx.fillRect(this.position.x, this.position.y - 9, this.toolsCooldown, 4);
+      ctx.fillRect(
+        this.position.x - 5,
+        this.position.y - 9,
+        this.toolsCooldown,
+        4
+      );
     }
 
     if (this.hand === this.tools[2]) {
       ctx.drawImage(
         wateringCan,
-        this.position.x - 15,
+        this.position.x - 20,
         this.position.y - 20,
         14,
         14
@@ -84,7 +89,7 @@ class Sprite {
     } else if (this.hand === this.tools[1]) {
       ctx.drawImage(
         seedsImage,
-        this.position.x - 15,
+        this.position.x - 20,
         this.position.y - 20,
         14,
         14
@@ -93,13 +98,13 @@ class Sprite {
       ctx.fillStyle = "black";
       ctx.fillText(
         `${this.inventory.seeds.quantity}`,
-        this.position.x - 15,
-        this.position.y - 6
+        this.position.x - 22,
+        this.position.y - 5
       );
     } else if (this.hand === this.tools[3]) {
       ctx.drawImage(
         emptyHand,
-        this.position.x - 15,
+        this.position.x - 20,
         this.position.y - 20,
         14,
         14
@@ -107,7 +112,7 @@ class Sprite {
     } else if (this.hand === this.tools[0]) {
       ctx.drawImage(
         hoeImage,
-        this.position.x - 15,
+        this.position.x - 20,
         this.position.y - 20,
         14,
         14

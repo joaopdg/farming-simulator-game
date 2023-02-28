@@ -173,7 +173,7 @@ function gameEngine() {
     }
   }
 
-  /*  -----------------  SPACE  ----------------- */
+  /*  -----------------  GARDENING  ----------------- */
   //garden collision
   if (player.toolsCooldown >= 10) {
     for (let i = 0; i < vegGarden.length; i++) {
@@ -198,6 +198,7 @@ function gameEngine() {
         ) {
           garden.landPlowed = true;
           player.toolsCooldown -= 10;
+          tracker.plowed++;
         }
 
         //cultivating block
@@ -211,6 +212,7 @@ function gameEngine() {
           player.inventory.seeds.quantity--;
           garden.cultivated = true;
           player.toolsCooldown -= 10;
+          tracker.planted++;
         }
 
         //watering block
@@ -222,9 +224,10 @@ function gameEngine() {
         ) {
           garden.watered = true;
           player.toolsCooldown -= 10;
+          tracker.watered++;
         }
 
-        //harvest block
+        //harvest and reset block
         if (
           garden.cultivated &&
           garden.harvestReady &&
@@ -249,6 +252,7 @@ function gameEngine() {
           }, 2000);
 
           player.toolsCooldown -= 10;
+          tracker.harvested++;
         }
         break;
       }
@@ -260,7 +264,7 @@ function gameEngine() {
     player.toolsCooldown += 0.08;
   }
 
-  //screens
+  //draw screens
   if (document.getElementById("chestDiv").classList.contains("opened")) {
     inventory.draw();
   } else if (
@@ -276,6 +280,28 @@ function gameEngine() {
   ) {
     prizes.draw();
   }
+
+  //quests progress
+  quests.map((el) => {
+    if (!el.completed) {
+      if (el.type === "plow") {
+        el.count = tracker.plowed;
+      } else if (el.type === "plant") {
+        el.count = tracker.planted;
+      } else if (el.type === "water") {
+        el.count = tracker.watered;
+      } else if (el.type === "harvest") {
+        el.count = tracker.harvested;
+      }
+    }
+  });
+
+  //quests completion
+  quests.map((el) => {
+    if (el.count >= el.goal) {
+      el.completed = true;
+    }
+  });
 }
 
 gameEngine();

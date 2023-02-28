@@ -28,6 +28,9 @@ if (savedGame) {
     el.position.x = savedGame.garden[i].x;
     el.position.y = savedGame.garden[i].y;
   });
+
+  //loading quests progress
+  tracker = savedGame.tracker;
 }
 
 /* --- FUNCTION TO SAVE GAME --- */
@@ -67,6 +70,7 @@ const saveGame = () => {
       x: background.position.x,
       y: background.position.y,
     },
+    tracker: tracker,
   };
 
   //save the game on local storage
@@ -76,12 +80,4 @@ const saveGame = () => {
 /* --- AUTOSAVE EVERY 10 SECONDS --- */
 setInterval(() => {
   saveGame();
-}, 10000);
-
-/* --- BUTTON TO SAVE GAME --- */
-window.addEventListener("touchstart", (e) => {
-  if (e.target.classList.contains("saveGame")) {
-    saveGame();
-  }
-});
-
+}, 5000);
