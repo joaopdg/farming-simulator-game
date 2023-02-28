@@ -11,38 +11,44 @@ const playerRight = new Image();
 playerRight.src = "../assets/sprites/playerRight.png";
 
 /* --- TOOLS IMAGE --- */
-const wateringCan = new Image()
-wateringCan.src = '../assets/sprites/wateringCan.png'
-const emptyHand = new Image()
-emptyHand.src = '../assets/sprites/emptyHand.png'
-const hoeImage = new Image()
-hoeImage.src = '../assets/sprites/hoeImage.png'
-const seedsImage = new Image()
-seedsImage.src = '../assets/sprites/seedsImage.png'
+const wateringCan = new Image();
+wateringCan.src = "../assets/sprites/wateringCan.png";
+const emptyHand = new Image();
+emptyHand.src = "../assets/sprites/emptyHand.png";
+const hoeImage = new Image();
+hoeImage.src = "../assets/sprites/hoeImage.png";
+const seedsImage = new Image();
+seedsImage.src = "../assets/sprites/seedsImage.png";
 
 /* --- CREATE PLAYER --- */
 let player = new Sprite({
-    position: {
-      x: canvas.width / 2 - 198 / 4 / 2 + 13,
-      /* y: canvas.height / 2 + 68 / 2 + 20, */
-      y: canvas.height / 2 - 50,
+  position: {
+    x: canvas.width / 2 - 198 / 4 / 2 + 13,
+    /* y: canvas.height / 2 + 68 / 2 + 20, */
+    y: canvas.height / 2 - 50,
+  },
+  image: playerDown,
+  frames: {
+    max: 4,
+  },
+  sprites: {
+    up: playerUp,
+    down: playerDown,
+    left: playerLeft,
+    right: playerRight,
+  },
+  inventory: {
+    seeds: {
+      quantity: 5,
     },
-    image: playerDown,
-    frames: {
-      max: 4,
+    harvest: {
+      quantity: 0,
     },
-    sprites: {
-      up: playerUp,
-      down: playerDown,
-      left: playerLeft,
-      right: playerRight,
-    },
-    inventory: {
-      seeds: {
-        quantity: 5,
-      },
-      harvest: {
-        quantity: 0,
-      },
-    },
-  });
+  },
+});
+
+/* --- SCREENS --- */
+let questBook = new Screen({ content: "QUEST BOOK" });
+let inventory = new Screen({ content: "INVENTORY" });
+let profile = new Screen({ content: "PROFILE" });
+let prizes = new Screen({ content: "PRIZES" });

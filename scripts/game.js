@@ -257,25 +257,25 @@ function gameEngine() {
 
   //regenerating cooldown
   if (player.toolsCooldown < 45) {
-    player.toolsCooldown += 0.05;
+    player.toolsCooldown += 0.08;
   }
 
   //screens
   if (document.getElementById("chestDiv").classList.contains("opened")) {
-    player.drawChest();
+    inventory.draw();
   } else if (
     document.getElementById("questsDiv").classList.contains("opened")
   ) {
-    player.drawQuests();
+    questBook.draw();
   } else if (
     document.getElementById("profileDiv").classList.contains("opened")
   ) {
-    player.drawProfile();
-  } /* else if (
+    profile.draw();
+  } else if (
     document.getElementById("prizesDiv").classList.contains("opened")
   ) {
-    player.drawPrizes();
-  } */
+    prizes.draw();
+  }
 }
 
 gameEngine();

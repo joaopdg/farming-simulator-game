@@ -17,7 +17,7 @@ html body {
 .icon {
   width: 60px;
   height: 60px;
-  margin: 10px;
+  margin: 10px 0px 0px 10px;
 }
 
 /* -------- MOBILE -------- */
@@ -46,7 +46,7 @@ html body {
     height: 60px;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid grey;
-    border-radius: 20px;
+    border-radius: 15px;
   }
 
   .button:active {
@@ -54,7 +54,7 @@ html body {
     height: 60px;
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid grey;
-    border-radius: 20px;
+    border-radius: 15px;
   }
 
   #mobile-controls {
@@ -74,6 +74,7 @@ html body {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    margin-bottom: 10px;
   }
 
   #mobile-controls-2 {
@@ -85,8 +86,8 @@ html body {
   }
 
   #closeScreen {
-    padding-top: 7vh;
-    padding-left: 85vw;
+    padding-top: 10vh;
+    padding-left: 83vw;
     background-color: rgba(125, 125, 125, 0);
     border: none;
   }
