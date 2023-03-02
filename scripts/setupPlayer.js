@@ -10,16 +10,6 @@ playerLeft.src = "../assets/sprites/playerLeft.png";
 const playerRight = new Image();
 playerRight.src = "../assets/sprites/playerRight.png";
 
-/* --- TOOLS IMAGE --- */
-const wateringCan = new Image();
-wateringCan.src = "../assets/sprites/wateringCan.png";
-const emptyHand = new Image();
-emptyHand.src = "../assets/sprites/emptyHand.png";
-const hoeImage = new Image();
-hoeImage.src = "../assets/sprites/hoeImage.png";
-const seedsImage = new Image();
-seedsImage.src = "../assets/sprites/seedsImage.png";
-
 /* --- CREATE PLAYER --- */
 let player = new Sprite({
   position: {
@@ -51,7 +41,11 @@ let player = new Sprite({
 const openedBook = new Image();
 openedBook.src = "../assets/images/openedBook.png";
 
-let questBook = new Screen({ image: openedBook, content: quests });
-let inventory = new Screen({ content: "INVENTORY" });
-let profile = new Screen({ content: "PROFILE" });
-let prizes = new Screen({ content: "PRIZES" });
+let questBook = new Screen({
+  image: openedBook,
+  content: quests,
+  screen: "quests",
+});
+let inventory = new Screen({ content: "INVENTORY", screen: "inventory" });
+let profile = new Screen({ content: "PROFILE", screen: "profile" });
+let prizes = new Screen({ content: "PRIZES", screen: "prizes" });

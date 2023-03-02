@@ -2,14 +2,7 @@
 
 /* --- PLAYER AND BG CLASS --- */
 class Sprite {
-  constructor({
-    position,
-    image,
-    frames = { max: 1 },
-    sprites,
-    inventory,
-    quests,
-  }) {
+  constructor({ position, image, frames = { max: 1 }, sprites, inventory }) {
     this.position = position;
     this.frames = { ...frames, val: 0, elapsed: 0 };
 
@@ -24,9 +17,30 @@ class Sprite {
 
     this.inventory = inventory;
 
-    this.tools = ["hoe", "seeds", "water", "sickle"];
     this.toolsCooldown = 45;
-    this.hand = this.tools[0];
+    this.tools = [
+      {
+        name: "hoe",
+        image: hoeImg,
+        quantity: 1,
+      },
+      {
+        name: "seeds",
+        image: seedsImg,
+        quantity: 5,
+      },
+      {
+        name: "water",
+        image: waterImg,
+        quantity: 1,
+      },
+      {
+        name: "sickle",
+        image: sickleImg,
+        quantity: 1,
+      },
+    ];
+    this.hand = this.tools[0].name;
   }
 
   draw() {
@@ -68,6 +82,7 @@ class Sprite {
     ctx.font = "bold 10px Helvetica";
     ctx.fillText("username", this.position.x - 5, this.position.y - 12);
 
+    //tool cooldown
     if (this.toolsCooldown > 0) {
       ctx.fillStyle = "red";
       ctx.fillRect(
@@ -78,45 +93,24 @@ class Sprite {
       );
     }
 
-    if (this.hand === this.tools[2]) {
-      ctx.drawImage(
-        wateringCan,
-        this.position.x - 20,
-        this.position.y - 20,
-        14,
-        14
-      );
-    } else if (this.hand === this.tools[1]) {
-      ctx.drawImage(
-        seedsImage,
-        this.position.x - 20,
-        this.position.y - 20,
-        14,
-        14
-      );
-      ctx.font = "bold 7px Helvetica";
-      ctx.fillStyle = "black";
-      ctx.fillText(
-        `${this.inventory.seeds.quantity}`,
-        this.position.x - 22,
-        this.position.y - 5
-      );
-    } else if (this.hand === this.tools[3]) {
-      ctx.drawImage(
-        emptyHand,
-        this.position.x - 20,
-        this.position.y - 20,
-        14,
-        14
-      );
-    } else if (this.hand === this.tools[0]) {
-      ctx.drawImage(
-        hoeImage,
-        this.position.x - 20,
-        this.position.y - 20,
-        14,
-        14
-      );
-    }
+    //tool cycle
+    this.tools.map((tool) => {
+      if (this.hand === tool.name) {
+        ctx.drawImage(
+          tool.image,
+          this.position.x - 20,
+          this.position.y - 20,
+          14,
+          14
+        );
+        ctx.font = "bold 7px Helvetica";
+        ctx.fillStyle = "black";
+        ctx.fillText(
+          `${tool.quantity}`,
+          this.position.x - 22,
+          this.position.y - 5
+        );
+      }
+    });
   }
 }

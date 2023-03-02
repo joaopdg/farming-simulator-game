@@ -1,10 +1,10 @@
 /* --- QUEST's SETUP --- */
 
 let tracker = {
-  plowed: 0,
-  planted: 0,
-  watered: 0,
-  harvested: 0,
+  plow: 0,
+  plant: 0,
+  water: 0,
+  harvest: 0,
 };
 
 let quests = [

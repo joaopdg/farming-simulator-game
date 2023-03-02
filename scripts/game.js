@@ -162,14 +162,14 @@ function gameEngine() {
     /*  -----------------  E  ----------------- */
   } else if (keys.e.pressed && lastKey === "e") {
     lastKey = "";
-    if (player.hand === player.tools[0]) {
-      player.hand = player.tools[1];
-    } else if (player.hand === player.tools[1]) {
-      player.hand = player.tools[2];
-    } else if (player.hand === player.tools[2]) {
-      player.hand = player.tools[3];
-    } else if (player.hand === player.tools[3]) {
-      player.hand = player.tools[0];
+    if (player.hand === player.tools[0].name) {
+      player.hand = player.tools[1].name;
+    } else if (player.hand === player.tools[1].name) {
+      player.hand = player.tools[2].name;
+    } else if (player.hand === player.tools[2].name) {
+      player.hand = player.tools[3].name;
+    } else if (player.hand === player.tools[3].name) {
+      player.hand = player.tools[0].name;
     }
   }
 
@@ -194,11 +194,11 @@ function gameEngine() {
         if (
           !garden.cultivated &&
           !garden.landPlowed &&
-          player.hand === player.tools[0]
+          player.hand === player.tools[0].name
         ) {
           garden.landPlowed = true;
           player.toolsCooldown -= 10;
-          tracker.plowed++;
+          tracker.plow++;
         }
 
         //cultivating block
@@ -207,12 +207,13 @@ function gameEngine() {
           !garden.cultivated &&
           garden.growStage === 1 &&
           garden.landPlowed &&
-          player.hand === player.tools[1]
+          player.hand === player.tools[1].name
         ) {
           player.inventory.seeds.quantity--;
           garden.cultivated = true;
           player.toolsCooldown -= 10;
-          tracker.planted++;
+          tracker.plant++;
+          player.tools[1].quantity--;
         }
 
         //watering block
@@ -220,11 +221,11 @@ function gameEngine() {
           garden.landPlowed &&
           garden.cultivated &&
           !garden.watered &&
-          player.hand === player.tools[2]
+          player.hand === player.tools[2].name
         ) {
           garden.watered = true;
           player.toolsCooldown -= 10;
-          tracker.watered++;
+          tracker.water++;
         }
 
         //harvest and reset block
@@ -232,7 +233,7 @@ function gameEngine() {
           garden.cultivated &&
           garden.harvestReady &&
           garden.growStage === 3 &&
-          player.hand === player.tools[3]
+          player.hand === player.tools[3].name
         ) {
           garden.cultivated = false;
           garden.harvestReady = false;
@@ -252,7 +253,8 @@ function gameEngine() {
           }, 2000);
 
           player.toolsCooldown -= 10;
-          tracker.harvested++;
+          tracker.harvest++;
+          player.tools[1].quantity = player.inventory.seeds.quantity;
         }
         break;
       }
@@ -285,21 +287,23 @@ function gameEngine() {
   quests.map((el) => {
     if (!el.completed) {
       if (el.type === "plow") {
-        el.count = tracker.plowed;
+        el.count = tracker.plow;
       } else if (el.type === "plant") {
-        el.count = tracker.planted;
+        el.count = tracker.plant;
       } else if (el.type === "water") {
-        el.count = tracker.watered;
+        el.count = tracker.water;
       } else if (el.type === "harvest") {
-        el.count = tracker.harvested;
+        el.count = tracker.harvest;
       }
     }
   });
 
-  //quests completion
+  //quests completion and reset tracker
   quests.map((el) => {
-    if (el.count >= el.goal) {
+    if (el.count >= el.goal && !el.completed) {
+      const questType = el.type;
       el.completed = true;
+      tracker.questType = 0;
     }
   });
 }
