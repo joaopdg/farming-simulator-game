@@ -42,3 +42,9 @@ let background = new Sprite({
   },
   image: mapImage,
 });
+
+
+
+
+
+
