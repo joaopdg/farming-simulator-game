@@ -30,20 +30,18 @@ let click = {
   x: 100,
   y: 100,
 };
-
 const getCoords = (event) => {
   const container = canvas.getBoundingClientRect();
-  /*   const x = event.clientX - container.left - 200;
-  const y = event.clientY - container.top - 20; */
   const x = event.clientX - container.left /2
   const y = event.clientY - container.top/2
 
+  /*   const x = event.clientX - container.left - 200;
+  const y = event.clientY - container.top - 20; */
 
   click = {
     x: x,
     y: y,
   };
-
   console.log("cX: " + x);
   console.log("cY: " + y);
   return clickCollision(click);

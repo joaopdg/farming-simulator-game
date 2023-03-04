@@ -266,23 +266,6 @@ function gameEngine() {
     player.toolsCooldown += 0.08;
   }
 
-  //draw screens
-  if (document.getElementById("chestDiv").classList.contains("opened")) {
-    inventory.draw();
-  } else if (
-    document.getElementById("questsDiv").classList.contains("opened")
-  ) {
-    questBook.draw();
-  } else if (
-    document.getElementById("profileDiv").classList.contains("opened")
-  ) {
-    profile.draw();
-  } else if (
-    document.getElementById("prizesDiv").classList.contains("opened")
-  ) {
-    prizes.draw();
-  }
-
   //quests progress
   quests.map((el) => {
     if (!el.completed) {
@@ -301,10 +284,22 @@ function gameEngine() {
   //quests completion and reset tracker
   quests.map((el) => {
     if (el.count >= el.goal && !el.completed) {
+      const questType = el.type;
       el.completed = true;
       tracker.questType = 0;
     }
   });
+
+  //draw buttons
+  gameButtons.forEach((button) => {
+    button.draw();
+  });
+
+
+  ctx.fillStyle = 'black',
+  ctx.fillRect(click.x, click.y, 20, 20)
+  ctx.fillStyle = 'red',
+  ctx.fillRect(canvas.width/2-10, canvas.height/2-10, 20, 20)
 }
 
 gameEngine();

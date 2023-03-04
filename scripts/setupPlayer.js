@@ -37,15 +37,4 @@ let player = new Sprite({
   },
 });
 
-/* --- SCREENS --- */
-const openedBook = new Image();
-openedBook.src = "../assets/images/openedBook.png";
 
-let questBook = new Screen({
-  image: openedBook,
-  content: quests,
-  screen: "quests",
-});
-let inventory = new Screen({ content: "INVENTORY", screen: "inventory" });
-let profile = new Screen({ content: "PROFILE", screen: "profile" });
-let prizes = new Screen({ content: "PRIZES", screen: "prizes" });

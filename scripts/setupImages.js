@@ -7,3 +7,7 @@ const hoeImg = new Image();
 hoeImg.src = "../assets/sprites/hoeImg.png";
 const seedsImg = new Image();
 seedsImg.src = "../assets/sprites/seedsImg.png";
+
+/* --- BUTTONS IMAGE --- */
+const iconBook = new Image();
+iconBook.src = "../assets/images/iconBook.png";
