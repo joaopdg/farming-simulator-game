@@ -3,13 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <!-- Prevent zoom on mobile -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-
     <!-- Favicon -->
     <link
       href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAARUVFAACz/wAUFBQAKysrAICAgAD/XgAAAAD/AAD/NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVQAAVVAAAFVVUAVXdQAFVVVVVVd1UAVVRVVVImZQBVREVVUiZlAFVUVVVViFUAVVVRVRWIVQAFVVVVVVVQAAREADAAREAAAAAAAwAAAAAAAAADAAAAAAAAADAAAAAAAAADAAAAAAAAAAMAAAAAD//wAA//8AAOPHAADBgwAAgAEAAIABAACAAQAAgAEAAIABAADAAwAAxuMAAP9/AAD/fwAA/v8AAP3/AAD9/wAA"
@@ -21,17 +19,32 @@
   </head>
 
   <body>
-    <!-- Mobile Controls -->
-    <div id="mobile-controls-1">
-      <button class="arrowUp button">▲</button>
-      <div id="mobile-controls-2">
-        <div>
-          <button class="arrowLeft button">◄</button>
-          <button class="toolsKey button">⟳</button>
-          <button class="arrowRight button">►</button>
-        </div>
+    <!-- SCREENS -->
+    <div id="mobile-controls">
+      <div id="closeScreen" class="closeScreen hidden"></div>
+      <div>
+        <img
+          id="profileDiv"
+          class="icon"
+          src="./assets/images/iconProfile.png"
+        />
+        <img id="prizesDiv" class="icon" src="./assets/images/iconPrizes.png" />
       </div>
-      <button class="arrowDown button">▼</button>
+      <img id="chestDiv" class="icon" src="./assets/images/iconChest.png" />
+      <img id="questsDiv" class="icon" src="./assets/images/iconBook.png" />
+
+      <!-- Mobile Controls -->
+      <div id="mobile-controls-1">
+        <button class="arrowUp button">▲</button>
+        <div id="mobile-controls-2">
+          <div>
+            <button class="arrowLeft button">◄</button>
+            <button class="toolsKey button">⟳</button>
+            <button class="arrowRight button">►</button>
+          </div>
+        </div>
+        <button class="arrowDown button">▼</button>
+      </div>
     </div>
 
     <!-- Canvas -->
@@ -45,11 +58,10 @@
   <script src="assets/map/tiled/gardenArray.js"></script>
   <script src="scripts/setupImages.js"></script>
   <script src="scripts/classAreas.js"></script>
-  <script src="scripts/classGUI.js"></script>
   <script src="scripts/classPlayer.js"></script>
+  <script src="scripts/classScreens.js"></script>
   <script src="scripts/setupQuests.js"></script>
   <script src="scripts/setupWorld.js"></script>
-  <script src="scripts/setupGUI.js"></script>
   <script src="scripts/setupPlayer.js"></script>
   <script src="scripts/collisions.js"></script>
   <script src="scripts/controlsDesktop.js"></script>

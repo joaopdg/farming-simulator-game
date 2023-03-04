@@ -18,6 +18,12 @@ body {
   display: none !important;
 }
 
+.icon {
+  width: 60px;
+  height: 60px;
+  margin: 10px 0px 0px 10px;
+}
+
 /* -------- MOBILE -------- */
 @media only screen and (max-width: 600px) {
   * {
@@ -26,18 +32,17 @@ body {
     user-select: none;
   }
 
-  /*   #container {
+    #container {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-  } */
+  } 
 
   canvas {
-    width: 100vw;
-    height: 100vh;
+    height: inherit;
   }
 
   .button {
@@ -56,16 +61,24 @@ body {
     border-radius: 15px;
   }
 
+  #mobile-controls {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
   #mobile-controls-1 {
-    width: auto;
+    width: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
-    position: fixed;
-    bottom: 0;
-    left: calc(100vw / 2 - 95px);
   }
 
   #mobile-controls-2 {
@@ -74,6 +87,12 @@ body {
     justify-content: space-evenly;
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+
+  #closeScreen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
 }
 
