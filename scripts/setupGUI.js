@@ -32,8 +32,9 @@ let click = {
 };
 const getCoords = (event) => {
   const container = canvas.getBoundingClientRect();
-  const x = event.clientX + window.innerWidth;
-  const y = event.clientY - 186;
+  const x = event.clientX - container.left /2
+  const y = event.clientY - container.top/2
+
   /*   const x = event.clientX - container.left - 200;
   const y = event.clientY - container.top - 20; */
 
