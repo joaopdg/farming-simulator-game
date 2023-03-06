@@ -1,14 +1,14 @@
 /**@type{HTMLCanvasElement} */
-const oppacity = 0.0;
+
 
 /* --- BOUNDARY CLASS --- */
 class Boundary {
-  static width = 24;
-  static height = 24;
+  static width = pixelRatio;
+  static height = pixelRatio;
   constructor({ position }) {
     this.position = position;
-    this.width = 24;
-    this.height = 24;
+    this.width = pixelRatio;
+    this.height = pixelRatio;
   }
 
   draw() {
@@ -19,13 +19,13 @@ class Boundary {
 
 /* --- GARDEN CLASS --- */
 class Garden {
-  static width = 24;
-  static height = 24;
+  static width = pixelRatio;
+  static height = pixelRatio;
   constructor({ position, image }) {
     this.position = position;
     this.image = image;
-    this.width = 24;
-    this.height = 24;
+    this.width = pixelRatio;
+    this.height = pixelRatio;
     this.landPlowed = false;
     this.cultivated = false;
     this.currentTime = null;

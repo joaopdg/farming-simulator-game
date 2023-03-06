@@ -1,16 +1,34 @@
 /**@type{HTMLCanvasElement} */
 
-/* --- PLAYER AND BG CLASS --- */
-class Sprite {
+/* --- PLAYER IMAGES --- */
+const playerUp = new Image();
+playerUp.src = "../assets/sprites/playerUp.png";
+const playerDown = new Image();
+playerDown.src = "../assets/sprites/playerDown.png";
+const playerLeft = new Image();
+playerLeft.src = "../assets/sprites/playerLeft.png";
+const playerRight = new Image();
+playerRight.src = "../assets/sprites/playerRight.png";
+
+/* --- TOOLS IMAGE --- */
+const waterImg = new Image();
+waterImg.src = "../assets/sprites/waterImg.png";
+const sickleImg = new Image();
+sickleImg.src = "../assets/sprites/sickleImg.png";
+const hoeImg = new Image();
+hoeImg.src = "../assets/sprites/hoeImg.png";
+const seedsImg = new Image();
+seedsImg.src = "../assets/sprites/seedsImg.png";
+
+/* --- PLAYER CLASS --- */
+class Player {
   constructor({ position, image, frames = { max: 1 }, sprites, inventory }) {
     this.position = position;
     this.frames = { ...frames, val: 0, elapsed: 0 };
 
     this.image = image;
-    this.image.onload = () => {
-      this.width = this.image.width / this.frames.max;
-      this.height = this.image.height;
-    };
+    this.width = this.image.width / this.frames.max;
+    this.height = this.image.height;
 
     this.moving = false;
     this.sprites = sprites;
@@ -114,3 +132,29 @@ class Sprite {
     });
   }
 }
+
+/* --- CREATE PLAYER --- */
+let player = new Player({
+  position: {
+    x: canvas.width / 2 - 198 / 4 / 2 + 13,
+    y: canvas.height / 2 - 50,
+  },
+  image: playerDown,
+  frames: {
+    max: 4,
+  },
+  sprites: {
+    up: playerUp,
+    down: playerDown,
+    left: playerLeft,
+    right: playerRight,
+  },
+  inventory: {
+    seeds: {
+      quantity: 5,
+    },
+    harvest: {
+      quantity: 0,
+    },
+  },
+});

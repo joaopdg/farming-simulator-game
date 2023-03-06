@@ -48,7 +48,7 @@ class Screen {
     }
 
     /* --- INVENTORY --- */
-/*     if (this.screen === "inventory") {
+    /*     if (this.screen === "inventory") {
       player.tools.map((tool, i) => {
         ctx.fillStyle = "white";
         ctx.fillRect(this.x + 15 + i * 50, this.y + 70, 40, 40);

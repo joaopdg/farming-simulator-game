@@ -263,7 +263,7 @@ function gameEngine() {
 
   //regenerating cooldown
   if (player.toolsCooldown < 45) {
-    player.toolsCooldown += 0.08;
+    player.toolsCooldown += coolDownSpeed
   }
 
   //quests progress
@@ -294,12 +294,6 @@ function gameEngine() {
   gameButtons.forEach((button) => {
     button.draw();
   });
-
-
-  ctx.fillStyle = 'black',
-  ctx.fillRect(click.x, click.y, 20, 20)
-  ctx.fillStyle = 'red',
-  ctx.fillRect(canvas.width/2-10, canvas.height/2-10, 20, 20)
 }
 
 gameEngine();

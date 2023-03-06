@@ -1,89 +1,53 @@
 /* -------- GLOBAL -------- */
-html {
-  margin: 0;
-  padding: 0;
-}
-
+html,
 body {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
+  margin: 0px;
+  padding: 0px;
   background-color: rgb(103, 230, 210);
-  min-zoom: 100%;
-  max-zoom: 100%;
 }
 
 .hidden {
   display: none !important;
 }
 
-/* -------- MOBILE -------- */
-@media only screen and (max-width: 600px) {
-  * {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  /*   #container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  } */
-
-  canvas {
-    width: 100vw;
-    height: 100vh;
-  }
-
-  .button {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid grey;
-    border-radius: 15px;
-  }
-
-  .button:active {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border: 1px solid grey;
-    border-radius: 15px;
-  }
-
-  #mobile-controls-1 {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 10px;
-    position: fixed;
-    bottom: 0;
-    left: calc(100vw / 2 - 95px);
-  }
-
-  #mobile-controls-2 {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
+* {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* -------- DESKTOP -------- */
-@media screen and (min-width: 700px) {
-  #mobile-controls-1 {
-    display: none !important;
-  }
+.button {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid grey;
+  border-radius: 15px;
+}
 
-  #mobile-controls-2 {
-    display: none !important;
-  }
+.button:active {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+
+#mobile-controls-1 {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  left: calc(100vw / 2 - 95px);
+}
+
+#mobile-controls-2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
