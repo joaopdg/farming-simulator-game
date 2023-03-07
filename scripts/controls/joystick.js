@@ -20,7 +20,7 @@ var JoyStick = function (attrs) {
   this.inner_radius = attrs.inner_radius || this.radius / 2;
   this.x = attrs.x || 0;
   this.y = attrs.y || 0;
-  this.mouse_support = false;
+  this.mouse_support = true;
 
   if (attrs.visible === undefined) {
     attrs.visible = true;
