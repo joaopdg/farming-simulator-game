@@ -7,7 +7,6 @@ function __init_joystick_div() {
   JOYSTICK_DIV = document.createElement("div");
   var div_style = JOYSTICK_DIV.style;
   div_style.background = "rgba(255,255,255,0)";
-  div_style.position = "absolute";
   div_style.top = "0px";
   div_style.bottom = "0px";
   div_style.left = "0px";
@@ -15,7 +14,6 @@ function __init_joystick_div() {
   div_style.margin = "0px";
   div_style.padding = "0px";
   div_style.borderWidth = "0px";
-  div_style.position = "absolute";
   div_style.overflow = "hidden";
   div_style.zIndex = "10000";
   document.body.appendChild(JOYSTICK_DIV);
