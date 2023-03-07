@@ -299,18 +299,20 @@ function gameEngine() {
   if (joystick.up) {
     keys.w.pressed = true;
     lastKey = "w";
-  }
-  if (joystick.down) {
+  } else if (joystick.down) {
     keys.s.pressed = true;
     lastKey = "s";
-  }
-  if (joystick.left) {
+  } else if (joystick.left) {
     keys.a.pressed = true;
     lastKey = "a";
-  }
-  if (joystick.right) {
+  } else if (joystick.right) {
     keys.d.pressed = true;
     lastKey = "d";
+  } else {
+    keys.w.pressed = false;
+    keys.s.pressed = false;
+    keys.a.pressed = false;
+    keys.d.pressed = false;
   }
 }
 
