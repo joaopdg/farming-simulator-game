@@ -1,6 +1,5 @@
 /**@type{HTMLCanvasElement} */
 
-
 /* --- BOUNDARY CLASS --- */
 class Boundary {
   static width = pixelRatio;
