@@ -64,38 +64,19 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
-/* --- MOBILE KEYS --- */
-window.addEventListener("touchstart", (e) => {
-  if (e.target.classList.contains("arrowUp")) {
-    keys.w.pressed = true;
-    lastKey = "w";
-  } else if (e.target.classList.contains("arrowLeft")) {
-    keys.a.pressed = true;
-    lastKey = "a";
-  } else if (e.target.classList.contains("arrowDown")) {
-    keys.s.pressed = true;
-    lastKey = "s";
-  } else if (e.target.classList.contains("arrowRight")) {
-    keys.d.pressed = true;
-    lastKey = "d";
-  } else if (e.target.classList.contains("toolsKey")) {
-    keys.e.pressed = true;
-    lastKey = "e";
-  }
+/* --- INIT MOBILE JOYSTICK --- */
+var joystick = new JoyStick({
+  radius: 50,
+  x: window.innerWidth / 2,
+  y: window.innerHeight - 100,
+  inner_radius: 40,
 });
 
-window.addEventListener("touchend", (e) => {
-  if (e.target.classList.contains("arrowUp")) {
-    keys.w.pressed = false;
-  } else if (e.target.classList.contains("arrowLeft")) {
-    keys.a.pressed = false;
-  } else if (e.target.classList.contains("arrowDown")) {
-    keys.s.pressed = false;
-  } else if (e.target.classList.contains("arrowRight")) {
-    keys.d.pressed = false;
-  } else if (e.target.classList.contains("toolsKey")) {
-    keys.e.pressed = false;
-  }
-});
+/* --- MOBILE KEYS --- */
+
+/* if (e.target.classList.contains("toolsKey")) {
+  keys.e.pressed = true;
+  lastKey = "e";
+} */
 
 

@@ -263,7 +263,7 @@ function gameEngine() {
 
   //regenerating cooldown
   if (player.toolsCooldown < 45) {
-    player.toolsCooldown += coolDownSpeed
+    player.toolsCooldown += coolDownSpeed;
   }
 
   //quests progress
@@ -294,6 +294,24 @@ function gameEngine() {
   gameButtons.forEach((button) => {
     button.draw();
   });
+
+  //joystick
+  if (joystick.up) {
+    keys.w.pressed = true;
+    lastKey = "w";
+  }
+  if (joystick.down) {
+    keys.s.pressed = true;
+    lastKey = "s";
+  }
+  if (joystick.left) {
+    keys.a.pressed = true;
+    lastKey = "a";
+  }
+  if (joystick.right) {
+    keys.d.pressed = true;
+    lastKey = "d";
+  }
 }
 
 gameEngine();

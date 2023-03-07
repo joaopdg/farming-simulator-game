@@ -8,10 +8,11 @@ openedBook.src = "../assets/images/openedBook.png";
 
 /* --- GUI CLASS --- */
 class Gui {
-  constructor({ iconPos, icon, screen }) {
+  constructor({ iconPos, icon, screen, content }) {
     this.clicked = false;
     this.icon = icon;
     this.screen = screen;
+    this.content = content;
     this.iconPos = {
       x: iconPos.x,
       y: iconPos.y,
@@ -57,6 +58,25 @@ class Gui {
         this.closeButton.width,
         this.closeButton.height
       );
+
+      if (this.content) {
+        this.content.map((el, i) => {
+          if (!el.completed || !el.reward) {
+            ctx.font = "bold 18px arial";
+            ctx.fillStyle = "black";
+            ctx.fillText(
+              `${el.desc}`,
+              canvas.width / 2 - 140,
+              canvas.height - canvas.height / 2 - 90 + i * 40
+            );
+            ctx.fillText(
+              `${el.count} / ${el.goal}`,
+              canvas.width / 2 + 90,
+              canvas.height - canvas.height / 2 - 90 + i * 40
+            );
+          }
+        });
+      }
     }
   }
 }
@@ -69,6 +89,7 @@ const gameButtons = [
     },
     icon: iconBook,
     screen: openedBook,
+    content: quests,
   }),
 ];
 
