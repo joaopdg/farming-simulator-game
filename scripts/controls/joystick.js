@@ -92,9 +92,9 @@ JoyStick.prototype.__create_fullscreen_div = function () {
   div_style.position = "absolute";
   div_style.top = this.y - this.radius + "px";
   div_style.left = this.x - this.radius + "px";
-  div_style.borderRadius = "80%";
-  div_style.borderColor = "rgba(200,200,200,0.8)";
-  div_style.borderWidth = "2px";
+  div_style.borderRadius = "100%";
+  div_style.borderColor = "rgba(200,200,200,1)";
+  div_style.borderWidth = "1px";
   div_style.borderStyle = "solid";
   this.div.appendChild(this.base);
   ///////////////////////////////////////////
@@ -105,8 +105,8 @@ JoyStick.prototype.__create_fullscreen_div = function () {
   div_style.position = "absolute";
   div_style.top = this.y - this.inner_radius + "px";
   div_style.left = this.x - this.inner_radius + "px";
-  div_style.borderRadius = "80%";
-  div_style.backgroundColor = "rgba(200,200,200,0.8)";
+  div_style.borderRadius = "70%";
+  div_style.backgroundColor = "rgba(200,200,200,0.7)";
   div_style.borderWidth = "1px";
   div_style.borderColor = "rgba(200,200,200,0.8)";
   div_style.borderStyle = "solid";

@@ -72,11 +72,4 @@ var joystick = new JoyStick({
   inner_radius: 40,
 });
 
-/* --- MOBILE KEYS --- */
-
-/* if (e.target.classList.contains("toolsKey")) {
-  keys.e.pressed = true;
-  lastKey = "e";
-} */
-
-
+//mobile keys in game.js file

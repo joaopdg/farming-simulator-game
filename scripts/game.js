@@ -31,6 +31,26 @@ function gameEngine() {
   let moving = true;
   player.moving = false;
 
+  //joystick controler
+  if (joystick.up) {
+    keys.w.pressed = true;
+    lastKey = "w";
+  } else if (joystick.down) {
+    keys.s.pressed = true;
+    lastKey = "s";
+  } else if (joystick.left) {
+    keys.a.pressed = true;
+    lastKey = "a";
+  } else if (joystick.right) {
+    keys.d.pressed = true;
+    lastKey = "d";
+  } else {
+    keys.w.pressed = false;
+    keys.s.pressed = false;
+    keys.a.pressed = false;
+    keys.d.pressed = false;
+  }
+
   /*  -----------------  W  ----------------- */
   if (keys.w.pressed && lastKey === "w") {
     //moving animation
@@ -261,6 +281,11 @@ function gameEngine() {
     }
   }
 
+  //draw buttons
+  gameButtons.forEach((button) => {
+    button.draw();
+  });
+
   //regenerating cooldown
   if (player.toolsCooldown < 45) {
     player.toolsCooldown += coolDownSpeed;
@@ -289,31 +314,6 @@ function gameEngine() {
       tracker.questType = 0;
     }
   });
-
-  //draw buttons
-  gameButtons.forEach((button) => {
-    button.draw();
-  });
-
-  //joystick
-  if (joystick.up) {
-    keys.w.pressed = true;
-    lastKey = "w";
-  } else if (joystick.down) {
-    keys.s.pressed = true;
-    lastKey = "s";
-  } else if (joystick.left) {
-    keys.a.pressed = true;
-    lastKey = "a";
-  } else if (joystick.right) {
-    keys.d.pressed = true;
-    lastKey = "d";
-  } else {
-    keys.w.pressed = false;
-    keys.s.pressed = false;
-    keys.a.pressed = false;
-    keys.d.pressed = false;
-  }
 }
 
 gameEngine();
