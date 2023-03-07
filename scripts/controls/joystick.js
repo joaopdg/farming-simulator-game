@@ -1,6 +1,3 @@
-// author: Willie Lawrence
-// contact: cptx032 arroba gmail dot com
-// based in https://github.com/jeromeetienne/virtualjoystick.js/blob/master/virtualjoystick.js
 var JOYSTICK_DIV = null;
 
 function __init_joystick_div() {
@@ -153,13 +150,6 @@ JoyStick.prototype.bind = function (evt, func) {
   this.control.addEventListener(evt, func);
 };
 
-/*
-attributes:
-	+ x
-	+ y
-	+ func
-	+ mouse_support
-*/
 var JoyStickButton = function (attrs) {
   this.radius = attrs.radius || 50;
   this.x = attrs.x || 0;

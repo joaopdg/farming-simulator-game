@@ -8,11 +8,12 @@ openedBook.src = "../assets/images/openedBook.png";
 
 /* --- GUI CLASS --- */
 class Gui {
-  constructor({ iconPos, icon, screen, content }) {
+  constructor({ iconPos, icon, screen, content, type }) {
     this.clicked = false;
     this.icon = icon;
     this.screen = screen;
     this.content = content;
+    this.type = type;
     this.iconPos = {
       x: iconPos.x,
       y: iconPos.y,
@@ -34,6 +35,7 @@ class Gui {
   }
 
   draw() {
+    //draw icon
     ctx.drawImage(
       this.icon,
       this.iconPos.x,
@@ -42,6 +44,7 @@ class Gui {
       this.iconPos.height
     );
 
+    //draw screen (icon oppened)
     if (this.clicked) {
       ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -52,6 +55,7 @@ class Gui {
         this.screenPos.width,
         this.screenPos.height
       );
+      //draw close button for opened screen
       ctx.fillRect(
         this.closeButton.x,
         this.closeButton.y,
@@ -59,8 +63,39 @@ class Gui {
         this.closeButton.height
       );
 
-      if (this.content) {
+      if (this.type === "questBook") {
         this.content.map((el, i) => {
+          //draw quest border and glow if completed
+          if (!el.reward) {
+            let elX = canvas.width / 2 - 150;
+            let elY = canvas.height - canvas.height / 2 - 110 + i * 40;
+            let elW = 300;
+            let elH = 30;
+            ctx.strokeStyle = "rgba(255,255,255,0.4)";
+            ctx.fillStyle = "rgba(255,255,255,0.4)";
+            if (el.completed) {
+              ctx.strokeStyle = "rgba(255,255,255,0.8)";
+              ctx.fillStyle = "rgba(255,255,255,0.8)";
+            }
+            ctx.beginPath();
+            ctx.roundRect(elX, elY, elW, elH, 5);
+            ctx.fill();
+            ctx.stroke();
+
+            //listen for click on completed quest
+          if (el.completed){
+            if (
+              click.x >= elX &&
+              click.x <= elX + elW &&
+              click.y >= elY &&
+              click.y <= elY + elH
+            ) {
+              el.reward = true;
+            }
+          }
+          }
+
+          //draw quest text
           if (!el.completed || !el.reward) {
             ctx.font = "bold 18px arial";
             ctx.fillStyle = "black";
@@ -90,6 +125,7 @@ const gameButtons = [
     icon: iconBook,
     screen: openedBook,
     content: quests,
+    type: "questBook",
   }),
 ];
 
@@ -104,6 +140,7 @@ const clickCollision = (click) => {
         click.y <= button.iconPos.y + button.iconPos.height
       ) {
         button.clicked = true;
+        screenOnTop = true;
       }
     } else if (button.clicked) {
       if (
@@ -113,6 +150,7 @@ const clickCollision = (click) => {
         click.y <= button.closeButton.y + button.closeButton.height
       ) {
         button.clicked = false;
+        screenOnTop = false;
       }
     }
   });
@@ -124,12 +162,17 @@ const getCoords = (event) => {
   const x = event.clientX - container.left / 2;
   const y = event.clientY - container.top / 2;
 
-  const click = {
+  click = {
     x: x,
     y: y,
   };
 
-  return clickCollision(click);
+  return click;
 };
 
-canvas.addEventListener("click", getCoords);
+const funcRunner = (e) => {
+  getCoords(e);
+  clickCollision(click);
+};
+
+canvas.addEventListener("click", funcRunner);

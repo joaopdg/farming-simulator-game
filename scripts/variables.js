@@ -14,3 +14,12 @@ const coolDownSpeed = 0.08;
 /* --- BOUNDARIES --- */
 const oppacity = 0.0;
 const pixelRatio = 24;
+
+/* --- CLICK COORDINATES --- */
+let click = {
+  x: 0,
+  y: 0,
+};
+
+/* --- CHECK IF ANY SCREEN IS OPEN --- */
+let screenOnTop = false;

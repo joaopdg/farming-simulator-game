@@ -179,17 +179,25 @@ function gameEngine() {
         movable.position.x -= 1.5;
       });
 
-    /*  -----------------  E  ----------------- */
-  } else if (keys.e.pressed && lastKey === "e") {
-    lastKey = "";
-    if (player.hand === player.tools[0].name) {
-      player.hand = player.tools[1].name;
-    } else if (player.hand === player.tools[1].name) {
-      player.hand = player.tools[2].name;
-    } else if (player.hand === player.tools[2].name) {
-      player.hand = player.tools[3].name;
-    } else if (player.hand === player.tools[3].name) {
-      player.hand = player.tools[0].name;
+    /*  -----------------  TOOLS CYCLE  ----------------- */
+  } else if (!screenOnTop) {
+    if (
+      click.x >= player.position.x &&
+      click.x <= player.position.x + player.width &&
+      click.y >= player.position.y &&
+      click.y <= player.position.y + player.height
+    ) {
+      click.x = 0;
+      click.y = 0;
+      if (player.hand === player.tools[0].name) {
+        player.hand = player.tools[1].name;
+      } else if (player.hand === player.tools[1].name) {
+        player.hand = player.tools[2].name;
+      } else if (player.hand === player.tools[2].name) {
+        player.hand = player.tools[3].name;
+      } else if (player.hand === player.tools[3].name) {
+        player.hand = player.tools[0].name;
+      }
     }
   }
 
