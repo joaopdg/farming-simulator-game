@@ -3,6 +3,12 @@
 /* --- BUTTONS IMAGE --- */
 const iconBook = new Image();
 iconBook.src = "../assets/images/iconBook.png";
+const iconChest = new Image();
+iconChest.src = "../assets/images/iconChest.png";
+const iconPrizes = new Image();
+iconPrizes.src = "../assets/images/iconPrizes.png";
+const iconProfile = new Image();
+iconProfile.src = "../assets/images/iconProfile.png";
 const openedBook = new Image();
 openedBook.src = "../assets/images/openedBook.png";
 
@@ -83,16 +89,16 @@ class Gui {
             ctx.stroke();
 
             //listen for click on completed quest
-          if (el.completed){
-            if (
-              click.x >= elX &&
-              click.x <= elX + elW &&
-              click.y >= elY &&
-              click.y <= elY + elH
-            ) {
-              el.reward = true;
+            if (el.completed) {
+              if (
+                click.x >= elX &&
+                click.x <= elX + elW &&
+                click.y >= elY &&
+                click.y <= elY + elH
+              ) {
+                el.reward = true;
+              }
             }
-          }
           }
 
           //draw quest text
@@ -116,16 +122,44 @@ class Gui {
   }
 }
 
+/* --- CREATING BUTTONS --- */
 const gameButtons = [
   new Gui({
     iconPos: {
       x: 10,
-      y: 20,
+      y: 10,
+    },
+    icon: iconProfile,
+    screen: openedBook,
+    type: "profile",
+  }),
+  new Gui({
+    iconPos: {
+      x: 10,
+      y: 10 * 6.5,
     },
     icon: iconBook,
     screen: openedBook,
     content: quests,
     type: "questBook",
+  }),
+  new Gui({
+    iconPos: {
+      x: 10,
+      y: 10 * 12.5,
+    },
+    icon: iconChest,
+    screen: openedBook,
+    type: "inventory",
+  }),
+  new Gui({
+    iconPos: {
+      x: 10 * 6,
+      y: 10,
+    },
+    icon: iconPrizes,
+    screen: openedBook,
+    type: "prizes",
   }),
 ];
 
