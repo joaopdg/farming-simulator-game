@@ -25,8 +25,8 @@ class worldMap {
     this.width = this.image.width;
     this.height = this.image.height;
     this.position = {
-      x: -this.image.width / 2 + window.innerWidth / 2,
-      y: -this.image.height / 2 + window.innerHeight / 2,
+      x: -1680 / 2 + window.innerWidth / 2,
+      y: -960 / 2 + window.innerHeight / 2,
     };
   }
 
