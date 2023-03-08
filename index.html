@@ -45,7 +45,19 @@
   <!-- Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/service-worker.js");
+      navigator.serviceWorker
+        .register("/service-worker.js", { scope: "/" })
+        .then((registration) => {
+          const data = {
+            type: "CACHE_URLS",
+            payload: [
+              location.href,
+              ...performance.getEntriesByType("resource").map((r) => r.name),
+            ],
+          };
+          registration.installing.postMessage(data);
+        })
+        .catch((err) => console.log("SW registration FAIL:", err));
     }
   </script>
 </html>

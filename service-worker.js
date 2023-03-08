@@ -1,4 +1,4 @@
-importScripts(
+/* importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"
 );
 
@@ -22,4 +22,29 @@ self.addEventListener("fetch", function (event) {
       return fetch(event.request);
     })
   );
+});
+ */
+
+
+
+
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"
+);
+
+const KEY = 'key';
+
+self.addEventListener('install', (event) => {
+    event.waitUntil(self.skipWaiting());
+});
+
+self.addEventListener('message', (event) => {
+    if (event.data.type === 'CACHE_URLS') {
+        event.waitUntil(
+            caches.open(KEY)
+                .then( (cache) => {
+                    return cache.addAll(event.data.payload);
+                })
+        );
+    }
 });
