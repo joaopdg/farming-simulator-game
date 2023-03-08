@@ -1,58 +1,4 @@
-/* importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"
-);
-
-workbox.routing.registerRoute(
-  ({ request }) => request.destination === "image",
-  new workbox.strategies.NetworkFirst()
-);
-
-self.addEventListener("install", function (event) {
-  caches.open("PRECACHE").then(function (cache) {
-    cache.addAll(cacheList);
-  });
-});
-
-self.addEventListener("fetch", function (event) {
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      if (response) {
-        return response;
-      }
-      return fetch(event.request);
-    })
-  );
-});
- */
-
-/* importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"
-);
-
-workbox.routing.registerRoute(
-  ({ request }) => request.destination === "image",
-  new workbox.strategies.NetworkFirst()
-);
-
-const KEY = "key";
-
-self.addEventListener("install", (event) => {
-  event.waitUntil(self.skipWaiting());
-});
-
-self.addEventListener("message", (event) => {
-  if (event.data.type === "CACHE_URLS") {
-    event.waitUntil(
-      caches.open(KEY).then((cache) => {
-        return cache.addAll(event.data.payload);
-      })
-    );
-  }
-}); */
-
-const cacheName = "farmingio_v2";
-
-const precachedAssets = [
+let coreAssets = [
   "/style.css",
   "/scripts/game.js",
   "/scripts/gameAreas.js",
@@ -88,33 +34,93 @@ const precachedAssets = [
   "/assets/sprites/waterImg.png",
 ];
 
-/* self.addEventListener("install", (event) => {
+// On install, cache core assets
+self.addEventListener("install", function (event) {
   event.waitUntil(
-    caches.open(cacheName).then((cache) => {
-      return cache.addAll(precachedAssets);
+    caches.open("app").then(function (cache) {
+      for (let asset of coreAssets) {
+        cache.add(new Request(asset));
+      }
+      return cache;
     })
   );
-}); */
-
-self.addEventListener("install", function (event) {
-  caches.open("farming_io").then(function (cache) {
-    cache.addAll(precachedAssets);
-  });
 });
 
-self.addEventListener("fetch", (event) => {
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      caches.open("farming_io").then((cache) => {
-        return fetch(event.request.url)
-          .then((fetchedResponse) => {
-            cache.put(event.request, fetchedResponse.clone());
+// Listen for request events
+self.addEventListener("fetch", function (event) {
+  let request = event.request;
+  if (
+    event.request.cache === "only-if-cached" &&
+    event.request.mode !== "same-origin"
+  )
+    return;
 
-            return fetchedResponse;
-          })
-          .catch(() => {
-            return cache.match(event.request.url);
+  // HTML files
+  // Network-first
+  if (request.headers.get("Accept").includes("text/html")) {
+    event.respondWith(
+      fetch(request)
+        .then(function (response) {
+          // Create a copy of the response and save it to the cache
+          let copy = response.clone();
+          event.waitUntil(
+            caches.open("app").then(function (cache) {
+              return cache.put(request, copy);
+            })
+          );
+
+          // Return the response
+          return response;
+        })
+        .catch(function (error) {
+          // If there's no item in cache, respond with a fallback
+          return caches.match(request).then(function (response) {
+            return response || caches.match("/offline.html");
           });
+        })
+    );
+  }
+
+  // CSS & JavaScript
+  // Offline-first
+  if (
+    request.headers.get("Accept").includes("text/css") ||
+    request.headers.get("Accept").includes("text/javascript")
+  ) {
+    event.respondWith(
+      caches.match(request).then(function (response) {
+        return (
+          response ||
+          fetch(request).then(function (response) {
+            // Return the response
+            return response;
+          })
+        );
+      })
+    );
+    return;
+  }
+
+  // Images
+  // Offline-first
+  if (request.headers.get("Accept").includes("image")) {
+    event.respondWith(
+      caches.match(request).then(function (response) {
+        return (
+          response ||
+          fetch(request).then(function (response) {
+            // Save a copy of it in cache
+            let copy = response.clone();
+            event.waitUntil(
+              caches.open("app").then(function (cache) {
+                return cache.put(request, copy);
+              })
+            );
+
+            // Return the response
+            return response;
+          })
+        );
       })
     );
   }
