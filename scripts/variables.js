@@ -12,7 +12,7 @@ const stageTwoTime = 6000; //20000
 const coolDownSpeed = 0.08;
 
 /* --- BOUNDARIES --- */
-const oppacity = 0.0;
+const oppacity = 0.5;
 const pixelRatio = 24;
 
 /* --- CLICK COORDINATES --- */
@@ -23,3 +23,9 @@ let click = {
 
 /* --- CHECK IF ANY SCREEN IS OPEN --- */
 let screenOnTop = false;
+
+/* --- MAP OFFSET --- x:-637 y:-60 --- */
+let offset = {
+  x: -1680 / 2 + window.innerWidth / 2,
+  y: -960 / 2 + window.innerHeight / 2,
+};

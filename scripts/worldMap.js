@@ -43,9 +43,3 @@ class worldMap {
 
 /* --- CREATE BACKGROUND --- */
 let background = new worldMap();
-
-/* --- MAP OFFSET --- x:-637 y:-60 --- */
-let offset = {
-  x: -background.image.width / 2 + window.innerWidth / 2,
-  y: -background.image.height / 2 + window.innerHeight / 2,
-};
