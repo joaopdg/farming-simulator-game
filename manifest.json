@@ -1,0 +1,10 @@
+{
+    "name": "farming.io",
+    "short_name": "farming.io",
+    "start_url": "/",
+    "icons": [{ "src": "/assets/images/iconChest.png", "sizes": "265x265" }],
+    "theme_color": "#000000",
+    "background_color": "#FFFFFF",
+    "display": "fullscreen",
+    "orientation": "portrait"
+}

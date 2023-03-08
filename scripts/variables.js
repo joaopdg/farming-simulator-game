@@ -12,7 +12,7 @@ const stageTwoTime = 6000; //20000
 const coolDownSpeed = 0.08;
 
 /* --- BOUNDARIES --- */
-const oppacity = 0.5;
+const oppacity = 0.0;
 const pixelRatio = 24;
 
 /* --- CLICK COORDINATES --- */
