@@ -50,11 +50,10 @@ self.addEventListener("message", (event) => {
   }
 }); */
 
-const cacheName = "farmingio_v1";
+const cacheName = "farmingio_v2";
 
 const precachedAssets = [
   "/style.css",
-  "/service-worker.js",
   "/scripts/game.js",
   "/scripts/gameAreas.js",
   "/scripts/gameSave.js",
@@ -89,18 +88,24 @@ const precachedAssets = [
   "/assets/sprites/waterImg.png",
 ];
 
-self.addEventListener("install", (event) => {
+/* self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheName).then((cache) => {
       return cache.addAll(precachedAssets);
     })
   );
+}); */
+
+self.addEventListener("install", function (event) {
+  caches.open("farming_io").then(function (cache) {
+    cache.addAll(precachedAssets);
+  });
 });
 
 self.addEventListener("fetch", (event) => {
   if (event.request.mode === "navigate") {
     event.respondWith(
-      caches.open(cacheName).then((cache) => {
+      caches.open("farming_io").then((cache) => {
         return fetch(event.request.url)
           .then((fetchedResponse) => {
             cache.put(event.request, fetchedResponse.clone());
@@ -112,7 +117,5 @@ self.addEventListener("fetch", (event) => {
           });
       })
     );
-  } else {
-    return;
   }
 });
