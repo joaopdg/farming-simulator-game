@@ -22,11 +22,13 @@ cultivedImg3.src = "../assets/sprites/cultivated3.png";
 class worldMap {
   constructor() {
     this.image = mapImage;
-    this.width = this.image.width;
-    this.height = this.image.height;
+    this.image.onload = () => {
+      this.width = this.image.width;
+      this.height = this.image.height;
+    };
     this.position = {
-      x: -1680 / 2 + window.innerWidth / 2,
-      y: -960 / 2 + window.innerHeight / 2,
+      x: mapSize.x / 2 + window.innerWidth / 2,
+      y: mapSize.y / 2 + window.innerHeight / 2,
     };
   }
 

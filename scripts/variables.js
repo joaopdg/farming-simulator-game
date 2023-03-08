@@ -25,7 +25,12 @@ let click = {
 let screenOnTop = false;
 
 /* --- MAP OFFSET --- x:-637 y:-60 --- */
+let mapSize = {
+  x: -1680,
+  y: -960,
+};
+
 let offset = {
-  x: -1680 / 2 + window.innerWidth / 2,
-  y: -960 / 2 + window.innerHeight / 2,
+  x: mapSize.x / 2 + window.innerWidth / 2,
+  y: mapSize.y / 2 + window.innerHeight / 2,
 };
