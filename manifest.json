@@ -1,10 +1,20 @@
 {
-    "name": "farming.io",
-    "short_name": "farming.io",
-    "start_url": "/",
-    "icons": [{ "src": "/assets/images/iconChest.png", "sizes": "265x265" }],
-    "theme_color": "#000000",
-    "background_color": "#FFFFFF",
-    "display": "fullscreen",
-    "orientation": "portrait"
+  "short_name": "farming.io",
+  "name": "farming.io idle game",
+  "description": "2D Idle Farming Game",
+  "start_url": "/",
+  "icons": [{ "src": "/assets/images/iconChest.png", "sizes": "265x265" }],
+  "theme_color": "#67E6D2",
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "shortcuts": [
+    {
+      "name": "Farming IO",
+      "short_name": "Farm IO",
+      "description": "2D Idle Farming Game",
+      "url": "/",
+      "icons": [{ "src": "/assets/images/iconBook.png", "sizes": "265x265" }]
+    }
+  ]
 }
