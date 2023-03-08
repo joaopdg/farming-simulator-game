@@ -7,14 +7,5 @@
   "theme_color": "#67E6D2",
   "background_color": "#FFFFFF",
   "display": "fullscreen",
-  "orientation": "portrait",
-  "shortcuts": [
-    {
-      "name": "Farming IO",
-      "short_name": "Farm IO",
-      "description": "2D Idle Farming Game",
-      "url": "/",
-      "icons": [{ "src": "/assets/images/iconBook.png", "sizes": "265x265" }]
-    }
-  ]
+  "orientation": "portrait"
 }
