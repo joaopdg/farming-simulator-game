@@ -1,24 +1,11 @@
 let coreAssets = [
   "/style.css",
-  "/scripts/game.js",
-  "/scripts/gameAreas.js",
-  "/scripts/gameSave.js",
-  "/scripts/gui.js",
-  "/scripts/player.js",
-  "/scripts/quests.js",
-  "/scripts/variables.js",
-  "/scripts/worldMap.js",
-  "/scripts/controls/joystick.js",
-  "/scripts/controls/controls.js",
+  "/assets/map/farming_io_map.png",
   "/assets/images/iconBook.png",
   "/assets/images/iconChest.png",
   "/assets/images/iconPrizes.png",
   "/assets/images/iconProfile.png",
   "/assets/images/openedBook.png",
-  "/assets/map/collisions.js",
-  "/assets/map/collisionsArray.js",
-  "/assets/map/farming_io_map.png",
-  "/assets/map/gardenArray.js",
   "/assets/sprites/cultivated.png",
   "/assets/sprites/cultivated2.png",
   "/assets/sprites/cultivated3.png",
@@ -32,9 +19,50 @@ let coreAssets = [
   "/assets/sprites/seedsImg.png",
   "/assets/sprites/sickleImg.png",
   "/assets/sprites/waterImg.png",
+  "/scripts/variables.js",
+  "/assets/map/collisionsArray.js",
+  "/assets/map/gardenArray.js",
+  "/scripts/gameAreas.js",
+  "/scripts/worldMap.js",
+  "/scripts/player.js",
+  "/scripts/quests.js",
+  "/scripts/gui.js",
+  "/assets/map/collisions.js",
+  "/scripts/controls/joystick.js",
+  "/scripts/controls/controls.js",
+  "/scripts/gameSave.js",
+  "/scripts/game.js",
 ];
 
-// On install, cache core assets
+self.addEventListener('install', function (event) {
+
+  // Cache core assets
+  event.waitUntil(caches.open('app').then(function (cache) {
+    for (let asset of coreAssets) {
+      cache.add(new Request(asset));
+    }
+    return cache;
+  }));
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------- */
+
+/* // On install, cache core assets
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open("app").then(function (cache) {
@@ -57,17 +85,21 @@ self.addEventListener("fetch", function (event) {
 
   // HTML files
   // Network-first
-  if (request.headers.get("Accept").includes("text/html")) {
+  if (
+    request.headers.get("Accept").includes("text/html") ||
+    request.headers.get("Accept").includes("text/css") ||
+    request.headers.get("Accept").includes("text/javascript") ||
+    request.headers.get("Accept").includes("image")
+  ) {
     event.respondWith(
       fetch(request)
         .then(function (response) {
           // Create a copy of the response and save it to the cache
           let copy = response.clone();
-          event.waitUntil(
-            caches.open("app").then(function (cache) {
-              return cache.put(request, copy);
-            })
-          );
+
+          caches.open("app").then(function (cache) {
+            return cache.put(request, copy);
+          });
 
           // Return the response
           return response;
@@ -125,3 +157,4 @@ self.addEventListener("fetch", function (event) {
     );
   }
 });
+ */
