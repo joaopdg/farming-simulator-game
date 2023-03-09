@@ -32,6 +32,7 @@ let coreAssets = [
   "/scripts/controls/controls.js",
   "/scripts/gameSave.js",
   "/scripts/game.js",
+  "/index.html",
 ];
 
 self.addEventListener("install", function (event) {
@@ -59,19 +60,15 @@ self.addEventListener("fetch", function (event) {
     event.respondWith(
       fetch(request)
         .then(function (response) {
-          // Create a copy of the response and save it to the cache
           let copy = response.clone();
           event.waitUntil(
             caches.open("app").then(function (cache) {
               return cache.put(request, copy);
             })
           );
-
-          // Return the response
           return response;
         })
         .catch(function (error) {
-          // If there's no item in cache, respond with a fallback
           return caches.match(request).then(function (response) {
             return response || caches.match("/offline.html");
           });
@@ -90,7 +87,6 @@ self.addEventListener("fetch", function (event) {
         return (
           response ||
           fetch(request).then(function (response) {
-            // Return the response
             return response;
           })
         );
@@ -107,15 +103,12 @@ self.addEventListener("fetch", function (event) {
         return (
           response ||
           fetch(request).then(function (response) {
-            // Save a copy of it in cache
             let copy = response.clone();
             event.waitUntil(
               caches.open("app").then(function (cache) {
                 return cache.put(request, copy);
               })
             );
-
-            // Return the response
             return response;
           })
         );
