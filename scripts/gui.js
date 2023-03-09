@@ -198,7 +198,7 @@ const getCoords = (event) => {
 
   click = {
     x: x,
-    y: y,
+    y: y - 50,
   };
 
   return click;
