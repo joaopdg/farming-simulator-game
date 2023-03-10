@@ -2,7 +2,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight - 50;
+canvas.height = window.innerHeight; /* - 50 */
 
 /* --- CULTIVATED TIME --- */
 const stageOneTime = 3000; //10000
