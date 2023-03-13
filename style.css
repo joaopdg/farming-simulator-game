@@ -57,12 +57,14 @@ body {
   width: 100vw;
   display: flex;
   justify-content: center;
-  background-color: lightgrey;
+  background-color: rgb(103, 230, 210);
   height: 60px;
 }
 
 #ad p {
-  top: -15px;
+  top: -10px;
   left: 4px;
   position: fixed;
+  font-size: small;
+  color: white;
 }
