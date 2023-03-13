@@ -24,7 +24,7 @@ let click = {
 /* --- CHECK IF ANY SCREEN IS OPEN --- */
 let screenOnTop = false;
 
-/* --- MAP OFFSET --- x:-637 y:-60 --- */
+/* --- MAP OFFSET --- */
 let mapSize = {
   x: -1680,
   y: -960,
@@ -34,3 +34,14 @@ let offset = {
   x: mapSize.x / 2 + window.innerWidth / 2,
   y: mapSize.y / 2 + window.innerHeight / 2,
 };
+
+/* --- CHECK IF USER ONLINE --- */
+let userOnline;
+function chkInternetStatus() {
+  if (navigator.onLine) {
+    userOnline = true;
+  } else {
+    userOnline = false;
+  }
+}
+chkInternetStatus();

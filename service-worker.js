@@ -51,18 +51,24 @@ self.addEventListener("install", function (event) {
 
 //get game files when offline
 self.addEventListener("fetch", function (event) {
-  console.log("Fetching: ", event.request.url);
+  console.log("Fetch: ", event.request.url);
   event.respondWith(
     caches
       .match(event.request)
       .then(function (response) {
+        //if file already in cache
         if (response) {
-          /* console.log("Found in cache: ", event.request.url);
-          return response; */
-          console.log("Network update: ", event.request.url);
-          return fetch(event.request);
+          //if online update
+          if (userOnline) {
+            console.log("Update: ", event.request.url);
+            return fetch(event.request);
+            //if offline use cache
+          } else if (!userOnline) {
+            console.log("Cache: ", event.request.url);
+            return response;
+          }
         }
-        console.log("Network request: ", event.request.url);
+        console.log("Download: ", event.request.url);
         return fetch(event.request);
       })
       .catch(function (error) {
