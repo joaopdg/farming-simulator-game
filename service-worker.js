@@ -54,7 +54,7 @@ let coreAssets = [
 //cache game files
 self.addEventListener("install", function (event) {
   event.waitUntil(
-    caches.open("app").then(function (cache) {
+    caches.open("farmingio_alpha").then(function (cache) {
       for (let asset of coreAssets) {
         cache.add(new Request(asset));
       }
