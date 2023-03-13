@@ -41,6 +41,7 @@ class Gui {
   }
 
   draw() {
+    ctx.fillRect(0, 0, 60, 60);
     //draw icon
     ctx.drawImage(
       this.icon,
@@ -69,6 +70,7 @@ class Gui {
         this.closeButton.height
       );
 
+      /* --- OPENED BOOK --- */
       if (this.type === "questBook") {
         this.content.map((el, i) => {
           //draw quest border and glow if completed
@@ -198,7 +200,7 @@ const getCoords = (event) => {
 
   click = {
     x: x,
-    y: y /* - 50 */,
+    y: y - 50,
   };
 
   return click;

@@ -1,5 +1,7 @@
 let coreAssets = [
   "/style.css",
+  "/manifest.json",
+  "/service-worker.js",
   "/assets/map/farming_io_map.png",
   "/assets/images/iconBook.png",
   "/assets/images/iconChest.png",
@@ -49,16 +51,18 @@ self.addEventListener("install", function (event) {
 
 //get game files when offline
 self.addEventListener("fetch", function (event) {
-  console.log("Fetch event for ", event.request.url);
+  console.log("Fetching: ", event.request.url);
   event.respondWith(
     caches
       .match(event.request)
       .then(function (response) {
-/*         if (response) {
-          console.log("Found ", event.request.url, " in cache");
-          return response;
-        } */
-        console.log("Network request for ", event.request.url);
+        if (response) {
+          /* console.log("Found in cache: ", event.request.url);
+          return response; */
+          console.log("Network update: ", event.request.url);
+          return fetch(event.request);
+        }
+        console.log("Network request: ", event.request.url);
         return fetch(event.request);
       })
       .catch(function (error) {
