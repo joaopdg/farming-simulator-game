@@ -1,3 +1,17 @@
+/* --- CHECK IF USER ONLINE --- */
+let userOnline;
+
+function chkInternetStatus() {
+  if (navigator.onLine) {
+    userOnline = true;
+  } else {
+    userOnline = false;
+  }
+}
+
+chkInternetStatus();
+
+/* --- FILES TO CACHE --- */
 let coreAssets = [
   "/style.css",
   "/manifest.json",

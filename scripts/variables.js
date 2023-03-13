@@ -35,13 +35,4 @@ let offset = {
   y: mapSize.y / 2 + window.innerHeight / 2,
 };
 
-/* --- CHECK IF USER ONLINE --- */
-let userOnline;
-function chkInternetStatus() {
-  if (navigator.onLine) {
-    userOnline = true;
-  } else {
-    userOnline = false;
-  }
-}
-chkInternetStatus();
+
