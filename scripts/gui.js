@@ -41,7 +41,7 @@ class Gui {
   }
 
   draw() {
-    ctx.fillRect(0, 0, 60, 60);
+    ctx.fillRect(click.x, click.y, 20, 20);
     //draw icon
     ctx.drawImage(
       this.icon,
@@ -200,7 +200,7 @@ const getCoords = (event) => {
 
   click = {
     x: x,
-    y: y - 50,
+    y: y - 40,
   };
 
   return click;
