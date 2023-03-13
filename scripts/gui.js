@@ -41,7 +41,6 @@ class Gui {
   }
 
   draw() {
-    ctx.fillRect(click.x, click.y, 20, 20);
     //draw icon
     ctx.drawImage(
       this.icon,
