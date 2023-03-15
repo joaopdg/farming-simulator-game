@@ -7,50 +7,10 @@ body {
   overflow: hidden;
 }
 
-.hidden {
-  display: none !important;
-}
-
 * {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.button {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid grey;
-  border-radius: 15px;
-}
-
-.button:active {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 1px solid grey;
-  border-radius: 15px;
-}
-
-#mobile-controls-1 {
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 10px;
-  position: fixed;
-  bottom: 0;
-  left: calc(100vw / 2 - 95px);
-}
-
-#mobile-controls-2 {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 #ad {
@@ -59,12 +19,4 @@ body {
   justify-content: center;
   background-color: rgb(82, 136, 126);
   height: 60px;
-}
-
-#ad p {
-  top: -10px;
-  left: 4px;
-  position: fixed;
-  font-size: small;
-  color: white;
 }
