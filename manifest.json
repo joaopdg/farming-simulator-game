@@ -7,5 +7,6 @@
   "theme_color": "#67E6D2",
   "background_color": "#FFFFFF",
   "display": "fullscreen",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "display_override": "window-controls-overlay"
 }
