@@ -81,7 +81,9 @@ JoyStick.prototype.__create_fullscreen_div = function () {
     __init_joystick_div();
   }
   this.div = JOYSTICK_DIV;
-  ///////////////////////////////////////////
+
+  ///////////////////// Border //////////////////////
+
   this.base = document.createElement("span");
   div_style = this.base.style;
   div_style.width = this.radius * 2 + "px";
@@ -94,24 +96,26 @@ JoyStick.prototype.__create_fullscreen_div = function () {
   div_style.borderWidth = "1px";
   div_style.borderStyle = "solid";
   this.div.appendChild(this.base);
-  ///////////////////////////////////////////
+
+  //////////////////// Joystick ///////////////////////
+
   this.control = document.createElement("span");
   div_style = this.control.style;
-  div_style.width = this.inner_radius * 2 + "px";
-  div_style.height = this.inner_radius * 2 + "px";
+  div_style.width = this.inner_radius * 2 - 10 + "px";
+  div_style.height = this.inner_radius * 2 - 10 + "px";
   div_style.position = "absolute";
-  div_style.top = this.y - this.inner_radius + "px";
-  div_style.left = this.x - this.inner_radius + "px";
+  div_style.top = this.y - this.inner_radius + 5 + "px";
+  div_style.left = this.x - this.inner_radius + 5 + "px";
   div_style.borderRadius = "70%";
   div_style.backgroundColor = "rgba(200,200,200,0.7)";
   div_style.borderWidth = "1px";
   div_style.borderColor = "rgba(200,200,200,0.8)";
   div_style.borderStyle = "solid";
   this.div.appendChild(this.control);
+
   ///////////////////////////////////////////
+
   var self = this;
-  // the event is binded in all the screen
-  // to captures fast movements
   function touch_hander(evt) {
     var touch_obj = evt.changedTouches ? evt.changedTouches[0] : evt;
     if (self.mouse_support && !(touch_obj.buttons === 1)) {
