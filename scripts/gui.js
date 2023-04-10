@@ -199,7 +199,7 @@ const getCoords = (event) => {
 
   click = {
     x: x,
-    y: y - 40,
+    y: y /* - 40 <= need with google ads*/,
   };
 
   return click;
