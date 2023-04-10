@@ -101,11 +101,11 @@ JoyStick.prototype.__create_fullscreen_div = function () {
 
   this.control = document.createElement("span");
   div_style = this.control.style;
-  div_style.width = this.inner_radius * 2 - 10 + "px";
-  div_style.height = this.inner_radius * 2 - 10 + "px";
+  div_style.width = this.inner_radius * 2 - 10 + "px"; //decreasing joy size
+  div_style.height = this.inner_radius * 2 - 10 + "px"; //decreasing joy size
   div_style.position = "absolute";
-  div_style.top = this.y - this.inner_radius + 5 + "px";
-  div_style.left = this.x - this.inner_radius + 5 + "px";
+  div_style.top = this.y - this.inner_radius + 5 + "px"; //centering joy
+  div_style.left = this.x - this.inner_radius + 5 + "px"; //centering joy
   div_style.borderRadius = "70%";
   div_style.backgroundColor = "rgba(200,200,200,0.7)";
   div_style.borderWidth = "1px";
@@ -137,8 +137,8 @@ JoyStick.prototype.__create_fullscreen_div = function () {
     self.up = false;
     self.down = false;
 
-    self.control.style.top = self.y - self.inner_radius + "px";
-    self.control.style.left = self.x - self.inner_radius + "px";
+    self.control.style.top = self.y - self.inner_radius + 5 + "px"; //centering joy
+    self.control.style.left = self.x - self.inner_radius + 5 + "px"; //centering joy
   }
   this.bind("touchmove", touch_hander);
   this.bind("touchstart", touch_hander);
