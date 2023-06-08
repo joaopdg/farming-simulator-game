@@ -289,15 +289,15 @@ function gameEngine() {
     }
   }
 
-  //draw buttons
-  gameButtons.forEach((button) => {
-    button.draw();
-  });
-
   //regenerating cooldown
   if (player.toolsCooldown < 45) {
     player.toolsCooldown += coolDownSpeed;
   }
+
+  //draw buttons
+  gameButtons.forEach((button) => {
+    button.draw();
+  });
 
   //quests progress
   quests.map((el) => {
